@@ -6,25 +6,21 @@
 
 		<div class="row mx-auto footer-main">
 			<div class="col-12 col-md-2 menu-list">
-				<a  href="<?php if (isset( $isHome ) ){ echo '#home';} else{ echo RUTA.'#home';}?>">Inicio</a>
-				<a href="<?php if (isset( $isHome ) ){ echo '#servicios';} else{ echo RUTA.'#servicios';}?>">Servicios</a>
+				<a href="<?php if (isset( $isHome ) ){ echo '#home';} else{ echo RUTA.'#home';}?>" class="margen">Inicio</a>
+				<a href="<?php if (isset( $isHome ) ){ echo '#vestidos';} else{ echo RUTA.'#vestidos';}?>">Vestidos</a>
+	 			<a href="<?php if (isset( $isHome ) ){ echo '#accesorios';} else{ echo RUTA.'#accesorios';}?>">Accesorios</a>
 				<a href="<?php if (isset( $isHome ) ){ echo '#about';} else{ echo RUTA.'#about';}?>">Acerca de</a>
-				<a href="<?php if (isset( $isHome ) ){ echo '#blog';} else{ echo RUTA.'#blog';}?>">Casos de éxito</a>
-				<a href="<?php if (isset( $isHome ) ){ echo '#contacto';} else{ echo RUTA.'#contacto';}?>"></a>
+				<a href="<?php if (isset( $isHome ) ){ echo '#contacto';} else{ echo RUTA.'#contacto';}?>">Contacto</a>
 			</div>
 
-			<div class="col-12 offset-md-1 col-md-2 menu-list">
-                <p>T. <?php echo $page['data'][0]['telefono'] ?></p>
-                <p>D. <?php echo $page['data'][0]['direccion'] ?></p>
-                <p>M. <?php echo $page['data'][0]['correo_electronico'] ?></p>
+			<div class="col-12 offset-md-1 col-md-3 menu-list">
+                <p>T. 999 354 7567</p>
+                <p>D. Calle 31 No 198 A x 88 y 90, 97320, Centro 97320 Progreso, México</p>
+                <p>M. malvastudio@gmail.com</p>
 				<div class="social-icons">
 
-				<?php if (isset($page['data'][0]['facebook'])): ?>
-					<a target="_blank" href=" <?php echo $page['data'][0]['facebook'] ?> "><img src="<?php echo RUTA ?>sprites/facebook.svg" alt=""></a>
-				<?php endif ?>
-				<?php if (isset($page['data'][0]['instagram'])): ?>
-					<a  target="_blank" href=" <?php echo $page['data'][0]['instagram'] ?> "><img src="<?php echo RUTA ?>sprites/instagram.svg" alt=""></a>
-				<?php endif ?>
+					<a target="_blank" href="https://www.facebook.com/malvastudi0"><img src="<?php echo RUTA ?>sprites/facebook.svg" alt=""></a>
+					<a  target="_blank" href="https://www.instagram.com/malvastudio_/"><img src="<?php echo RUTA ?>sprites/instagram.svg" alt=""></a>
 				</div>
 			</div>
 
@@ -33,8 +29,8 @@
 
 		<div class="row mx-auto terms-container col-8">
 			<div class="links">
-                <span class="link">Copyright © 2020 Laminex. Todos los derechos reservados. </span>
-				<span class="link">Aviso de privacidad</span>
+                <span class="link">Copyright © 2020 Malva Studio. Todos los derechos reservados. </span>
+				
 				
 			</div>
 		</div>

@@ -38,8 +38,7 @@
 
 	#Extra
 	#
-	$google_analitycs = "
-	";
+	$google_analitycs = "";
 
 	$google_recaptcha = "";
 

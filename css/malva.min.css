@@ -119,6 +119,12 @@ figure.sombra {
 @font-face {
   font-family: poppins-semibold;
   src: url("../fonts/own-fonts/Poppins-SemiBold.ttf"); }
+@font-face {
+  font-family: cherry;
+  src: url("../fonts/own-fonts/CherrySwash-Regular.ttf"); }
+@font-face {
+  font-family: great;
+  src: url("../fonts/own-fonts/Great-Sejagad.ttf"); }
 .venus-regular {
   font-family: venus-regular !important; }
 
@@ -671,5 +677,4 @@ section.caso {
 @media screen and (min-width: 1024px) {
   body, html {
     font-size: 10px; } }
-
-/*# sourceMappingURL=laminex.min.css.map */
+/*# sourceMappingURL=malva.min.css.map */

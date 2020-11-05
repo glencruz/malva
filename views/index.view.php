@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
     	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<title>Inicio - Laminex</title>
+		<title>Inicio - Malva Studio</title>
 
 		<meta property="og:url"                content="..." />
 		<meta property="og:type"               content="website" />
@@ -36,8 +36,8 @@
 		<section class="banner" id="home">
 			<div class="image">
 				<figure>
-					<img src="<?php echo $page['data'][0]['banner']['data']['full_url']  ?>"class="d-none d-md-block w-100" alt="...">
-					<img src="<?php echo $page['data'][0]['banner_mobile']['data']['full_url']  ?>" class="d-block d-md-none w-100" alt="...">
+					<img src="https://placehold.it/1366x544"class="d-none d-md-block w-100" alt="...">
+					<img src="https://placehold.it/375x460" class="d-block d-md-none w-100" alt="...">
 					
 				</figure>
 			</div>
@@ -47,16 +47,16 @@
 					<div class="row">
 						<div class="col-md-11 offset-md-1">
 							<h1 class="title txt-stroke white v2 mb-5">
-							<?php echo $page['data'][0]['titulo_banner'] ?>
+							Malva Studio
 							</h1>
 
 							<h2 class="title v2 white mb-5">
-							<?php echo $page['data'][0]['subtitulo'] ?>
+							Boutique
 							</h2>
 						</div>
 						<div class="col-md-5 offset-md-1" >
 							<div class="paragraph white mb-4">
-							<?php echo $page['data'][0]['cuerpo_banner'] ?>
+							Vestidos de noche para toda ocasión
 							</div>
 
 							<a href="#contacto" class="ancla orange "> Contáctanos <img class="ancla hright" src="<?=RUTA?>sprites/hright.svg" alt=""></a>
@@ -70,7 +70,7 @@
 
 
 
-		<section class="servicios" id="servicios">
+	<!--	<section class="servicios" id="servicios">
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-12 offset-md-1">
@@ -90,30 +90,36 @@
 
 				<div class="row mt-5">
 					<div class="col-md-4 offset-md-1">		
-					<?php foreach ($servicios['data'] as $key => $servicio): ?>
+					
 						<div class="d-flex align-items-center mt-3">
 							<figure>
-								<img src=" <?php echo $servicio['icono']['data']['full_url'] ?> " alt="">
+								<img src="https://placehold.it/79x79" alt="">
 							</figure>
 
 							<div class="paragraph v2 black ml-5	">
-								<?php echo $servicio['texto'] ?>
+								Vestidos
 							</div>
 						</div>
-						<?php endforeach ?>
-						
+						<div class="d-flex align-items-center mt-3">
+							<figure>
+								<img src="https://placehold.it/79x79" alt="">
+							</figure>
+
+							<div class="paragraph v2 black ml-5	">
+								Accesorios
+							</div>
+						</div>
+							
 					</div>
 
 					<div class="col-md-4 p-0 offset-md-2  lottie-animation" data-animation-name="laminex" data-loop="0">
-						<!-- <figure class="sombra">
-							<img src=" <?php echo $page['data'][0]['imagen_servicios']['data']['full_url'] ?>" alt="" class="img-fluid mw">
-						</figure> -->
+						
 					</div>
 				</div>
 
 
 			</div>
-		</section>
+		</section>-->
 
 
 		<section class="strip">
@@ -121,17 +127,26 @@
 				<div class="row justify-content-around">
 					<div class="col-md-10 mx-auto">
 						<div class="row justify-content-around">
-						<?php foreach ($strips['data'] as $key => $strip): ?>
+						
 							<div class="col-md-4 text-center ">
 								<figure class="mb-5">
-									<img src="<?php echo $strip['icono']['data']['full_url'] ?>">
+									<img src="https://placehold.it/174x97">
 								</figure>
 
 								<div class="paragraph v3 blue">
-									<?php echo $strip['texto'] ?>
+									Vestidos
 								</div>		
 							</div>
-						<?php endforeach ?>
+							<div class="col-md-4 text-center ">
+								<figure class="mb-5">
+									<img src="https://placehold.it/174x97">
+								</figure>
+
+								<div class="paragraph v3 blue">
+									Accesorios
+								</div>		
+							</div>
+					
 						</div>
 					</div>	
 				</div>
@@ -160,14 +175,14 @@
 
 							<div class="col-md-12 body">
 								<div class="paragraph black">
-								<?php echo $page['data'][0]['texto_acerca_de'] ?>
+								Lorem Ipsum
 								</div>
 							</div>		
 						</div>						
 					</div>
 					<div class="col-md-4" >
 						<figure>
-							<img src="<?php echo $page['data'][0]['img_acerca_de']['data']['full_url'] ?>" alt="" class="img-fluid mw">
+							<img src="https://placehold.it/422x422" alt="" class="img-fluid mw">
 						</figure>
 					</div>
 				</div>
@@ -183,7 +198,7 @@
 							<div class="puntos"> </div>
 							<div class="ml-4">
 								<h1 class="title txt-stroke blue">
-									CASOS DE ÉXITO
+									Vestidos
 								</h1>							
 							</div>
 						</div>
@@ -193,24 +208,24 @@
 
 				<!-- Cada vista previa del post mide 498.395px en una resolución de 1366.  -->
 				<div class="row carousel-blog">
-					<div class="slider" id="slider-posts" posts="<?php echo $casos['meta']['result_count']?>">
-					<?php foreach ($casos['data'] as $key => $caso): ?>
+					<div class="slider" id="slider-posts" posts="1">
+					
 						<div class="preview-post">
-							<a href=" <?=RUTA?>post.php?id=<?php echo $caso['id'] ?> ">
+							<a href=" <?=RUTA?>post.php?id=<?php echo 1 ?> ">
 								<figure>
-									<img src="<?php echo $caso['imagen']['data']['full_url'] ?> " class="img-fluid mw" alt="">
+									<img src="https://placehold.it/534x325" class="img-fluid mw" alt="">
 								</figure>
 								<div class="content">
 									<h1 class="title txt-stroke orange">
-										<?php echo $caso['titulo'] ?>
+										Titulo
 									</h1>
 									<div class="paragraph white">
-										<?php echo $caso['descripcion'] ?>									
+										descripción								
 									</div>
 								</div>	
 							</a>
 						</div>
-					<?php endforeach ?>	
+						
 					</div>
 				</div>
 
@@ -271,11 +286,11 @@
 						</div>						
 					</div>
 					<div class="col-md-5 col-12">
-						<iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119210.04438724405!2d-89.70295877514155!3d20.98005123832179!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f56715cab450d17%3A0x5dfc155715abeb09!2zTcOpcmlkYSwgWXVjLg!5e0!3m2!1ses!2smx!4v1602875479640!5m2!1ses!2smx" width="535" height="273" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+						<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14870.881405229547!2d-89.6682854!3d21.2825344!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xf9a9ac2e0f2ba04a!2sMalva%20Studio!5e0!3m2!1ses!2smx!4v1604549446330!5m2!1ses!2smx" width="535" height="273" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 							<div class="datos col-md-7 col-12">
-								<p class="paragraph v2 orange">T.<bold class="paragraph v2 black"> <?php echo $page['data'][0]['telefono'] ?></bold></p>
-								<p class="paragraph v2 orange">D.<bold class="paragraph v2 black"> <?php echo $page['data'][0]['direccion'] ?></bold></p>
-								<p class="paragraph v2 orange">M.<bold class="paragraph v2 black"> <?php echo $page['data'][0]['correo_electronico'] ?></bold></p>
+								<p class="paragraph v2 orange">T.<bold class="paragraph v2 black"> 999 354 7567</bold></p>
+								<p class="paragraph v2 orange">D.<bold class="paragraph v2 black">Calle 31 No 198 A x 88 y 90, 97320, Centro 97320 Progreso, México</bold></p>
+								<p class="paragraph v2 orange">M.<bold class="paragraph v2 black">malvastudio@gmail.com</bold></p>
 							</div>	
 					</div>
 					
