@@ -1,0 +1,194 @@
+$blue: #2d4d76;
+$orange: #fc8813;
+$white: white;
+
+.text-black {
+  color: #000 !important;
+}
+
+.text-white {
+  color: #fff !important;
+}
+
+.img-fluid {
+  &.mw {
+    min-width: 100%;
+  }
+}
+
+//Tamaños de tipografías
+.puntos {
+  width: 11px;
+  height: 11px;
+  border-radius: 100%;
+  background-color: $orange;
+  position: relative;
+  top: 23px;
+
+  &:after,
+  &:before {
+    content: "";
+    width: 11px;
+    height: 11px;
+    border-radius: 100%;
+    background-color: $orange;
+    position: absolute;
+  }
+
+  &:after {
+    top: -16px;
+  }
+  &:before {
+    top: 16px;
+  }
+}
+.title {
+  font-family: venus-regular;
+  font-size: 3.5rem;
+  line-height: 42px;
+  color: white;
+
+  &.blue {
+    color: $blue;
+  }
+
+  &.v2 {
+    font-size: 5rem;
+    //line-height: 60px;
+  }
+  &.pt {
+    padding-top: 5px;
+  }
+
+  &.txt-stroke {
+    color: transparent;
+    &.blue {
+      -webkit-text-stroke: 1px $blue;
+    }
+    &.white {
+      -webkit-text-stroke: 1px white;
+    }
+    &.orange {
+      -webkit-text-stroke: 1px $orange;
+    }
+  }
+}
+
+.paragraph {
+  font-family: poppins-regular;
+  color: white;
+  font-size: 1.5rem;
+  line-height: 23px;
+
+  &.black {
+    color: black;
+  }
+  &.orange {
+    color: $orange;
+  }
+  &.blue {
+    color: $blue;
+  }
+
+  &.v2 {
+    font-size: 1.8rem;
+  }
+  &.v3 {
+    font-size: 2rem;
+  }
+
+  b,
+  strong {
+    font-family: poppins-bold;
+    font-weight: normal;
+  }
+}
+
+.ancla {
+  font-family: poppins-bold;
+  font-size: 2rem;
+
+  &.orange {
+    color: $orange;
+  }
+  &.hright {
+    margin-left: 2%;
+  }
+}
+.button {
+  color: $white;
+  background: $blue;
+  padding: 1rem 8rem;
+  border-radius: 40px;
+  font-family: poppins-regular;
+  font-size: large;
+  display: block;
+  border: none;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 0 $orange;
+  -webkit-transition: all ease 0.8s;
+  -moz-transition: all ease 0.8s;
+  transition: all ease 0.8s;
+
+  &:hover {
+    box-shadow: inset 0 -70px 0 0 $orange;
+  }
+}
+figure.sombra {
+  position: relative;
+  &:before {
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: 15px;
+    right: -15px;
+    bottom: 15px;
+    z-index: -1;
+    background-color: $blue;
+  }
+}
+
+@font-face {
+  font-family: venus-regular;
+  src: url("../fonts/own-fonts/venus rising rg.ttf");
+}
+
+@font-face {
+  font-family: poppins-regular;
+  src: url("../fonts/own-fonts/Poppins-Regular.ttf");
+}
+
+@font-face {
+  font-family: poppins-bold;
+  src: url("../fonts/own-fonts/Poppins-Bold.ttf");
+}
+
+@font-face {
+  font-family: poppins-medium;
+  src: url("../fonts/own-fonts/Poppins-Medium.ttf");
+}
+
+@font-face {
+  font-family: poppins-semibold;
+  src: url("../fonts/own-fonts/Poppins-SemiBold.ttf");
+}
+
+.venus-regular {
+  font-family: venus-regular !important;
+}
+
+.popins-regular {
+  font-family: poppins-regular !important;
+}
+
+.poppins-bold {
+  font-family: poppins-bold !important;
+}
+
+.poppins-medium {
+  font-family: poppins-medium !important;
+}
+
+.poppins-semibold {
+  font-family: poppins-semibold !important;
+}

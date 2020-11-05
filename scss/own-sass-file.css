@@ -1,0 +1,97 @@
+.text-black {
+  color: #000 !important; }
+
+.text-white {
+  color: #fff !important; }
+
+.title {
+  font-family: venus-regular;
+  font-size: 3.5rem;
+  line-height: 42px;
+  color: white; }
+  .title.azul {
+    color: #2D4D76; }
+  .title.v2 {
+    font-size: 5rem;
+    line-height: 60px; }
+  .title .transparente {
+    color: transparent; }
+    .title .transparente.azul {
+      -webkit-text-stroke: 1px white; }
+    .title .transparente.blanco {
+      -webkit-text-stroke: 1px #2D4D76; }
+    .title .transparente.orange {
+      -webkit-text-stroke: 1px #FC8813; }
+
+.paragraph {
+  font-family: poppins-regular;
+  color: white;
+  font-size: 1.5rem;
+  line-height: 23px; }
+  .paragraph.black {
+    color: black; }
+  .paragraph.orange {
+    color: #FC8813; }
+  .paragraph.v2 {
+    font-size: 1.8rem; }
+  .paragraph.v3 {
+    font-size: 2rem; }
+
+@font-face {
+  font-family: venus-regular;
+  src: url("../fonts/own-fonts/venus rising rg.ttf"); }
+@font-face {
+  font-family: popins-regular;
+  src: url("../fonts/own-fonts/Poppins-Regular.ttf"); }
+@font-face {
+  font-family: poppins-bold;
+  src: url("../fonts/own-fonts/Poppins-Bold.ttf"); }
+@font-face {
+  font-family: poppins-medium;
+  src: url("../fonts/own-fonts/Poppins-Medium.ttf"); }
+@font-face {
+  font-family: poppins-semibold;
+  src: url("../fonts/own-fonts/Poppins-SemiBold.ttf"); }
+.venus-regular {
+  font-family: venus-regular !important; }
+
+.popins-regular {
+  font-family: poppins-regular !important; }
+
+.poppins-bold {
+  font-family: poppins-bold !important; }
+
+.poppins-medium {
+  font-family: poppins-medium !important; }
+
+.poppins-semibold {
+  font-family: poppins-semibold !important; }
+
+.bgr-white {
+  background-color: #fff; }
+
+.bgr-black {
+  background-color: #000; }
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-size: 10px;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch; }
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+a:hover {
+  cursor: pointer; }
+
+a:focus {
+  outline: none; }
+
+@media screen and (min-width: 1024px) {
+  body, html {
+    font-size: 10px; } }
+
+/*# sourceMappingURL=own-sass-file.css.map */
