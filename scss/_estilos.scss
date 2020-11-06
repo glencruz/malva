@@ -8,8 +8,6 @@ html {
   overflow-x: hidden;
 
   -webkit-overflow-scrolling: touch;
-  
-
 }
 
 * {
@@ -19,18 +17,20 @@ html {
 
 a:hover {
   cursor: pointer;
+  color: $morado;
 }
 
 a:focus {
   outline: none;
 }
 header.header.scroll {
-  background-color: $blue;
+  background-color: $lila;
   .regular-logo {
     filter: brightness(0) invert(1);
   }
-
-
+  h1 {
+    color: #fff;
+  }
 }
 /*header.header.mitad {
   background-color: $blue;
@@ -63,11 +63,11 @@ header.header {
     .bars {
       width: 36px;
       height: 4px;
-      background-color: $blue;
+      background-color: $morado;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
       transition: 0.5s;
 
-      &.white{
+      &.white {
         background-color: #fff;
         &:before,
         &:after {
@@ -81,7 +81,7 @@ header.header {
         position: absolute;
         width: 36px;
         height: 4px;
-        background-color: $blue;
+        background-color: $morado;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         transition: 0.4s;
       }
@@ -111,7 +111,7 @@ header.header {
     flex-direction: column;
     align-items: right;
     justify-content: right;
-    background-color: $blue;
+    background-color: $morado;
     margin-top: -5%;
     margin-left: 60%;
 
@@ -139,33 +139,33 @@ header.header {
   }
 }
 
-.collapse{
+.collapse {
   position: fixed;
   top: 0;
   right: 0;
   overflow: hidden;
   height: 0px;
-  background-color: $blue;
+  background-color: $lila;
   transition: 0.5s;
   z-index: 8;
   padding-right: 9.66666%;
   padding-left: 9rem;
-  
-  a{
+
+  a {
     margin-bottom: 4rem;
     color: white;
     font-size: 3.5rem;
 
-    &.hover,&.active{
+    &.hover,
+    &.active {
       text-decoration: underline;
     }
   }
 
-  &.active{
+  &.active {
     padding-top: 13rem;
   }
 }
-
 
 section.banner {
   position: relative;
@@ -334,7 +334,7 @@ section.contacto {
       background-color: #efefef;
       margin-bottom: 2rem;
       padding: 1rem 1.3rem;
-      border: solid 2px $blue;
+      border: solid 2px $morado;
       font-family: poppins-regular;
       font-size: small;
     }
@@ -342,7 +342,7 @@ section.contacto {
     textarea {
       resize: none;
       padding: 1rem 1.3rem;
-      border: solid 2px $blue;
+      border: solid 2px $morado;
       width: 100%;
       height: auto;
       background-color: #efefef;
@@ -361,7 +361,7 @@ section.contacto {
 }
 
 footer.footer {
-  background-color: $blue;
+  background-color: $lila;
   padding: 2rem 0;
   position: relative;
   z-index: 1;
@@ -424,10 +424,10 @@ footer.footer {
 section.caso {
   margin-top: 10%;
   .title {
-    color: $orange;
+    color: $morado;
     margin-bottom: 5%;
-    &.blue {
-      color: $blue;
+    &.morado {
+      color: $morado;
       font-size: 2rem;
     }
   }

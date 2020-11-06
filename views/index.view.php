@@ -46,7 +46,7 @@
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-md-11 offset-md-1">
-							<h1 class="title txt-stroke white v2 mb-5">
+							<h1 class="title white v2 mb-5">
 							Malva Studio
 							</h1>
 
@@ -59,7 +59,6 @@
 							Vestidos de noche para toda ocasión
 							</div>
 
-							<a href="#contacto" class="ancla orange "> Contáctanos <img class="ancla hright" src="<?=RUTA?>sprites/hright.svg" alt=""></a>
 						</div>
 
 					</div>
@@ -133,7 +132,7 @@
 									<img src="https://placehold.it/174x97">
 								</figure>
 
-								<div class="paragraph v3 blue">
+								<div class="paragraph v3 morado">
 									Vestidos
 								</div>		
 							</div>
@@ -142,7 +141,7 @@
 									<img src="https://placehold.it/174x97">
 								</figure>
 
-								<div class="paragraph v3 blue">
+								<div class="paragraph v3 morado">
 									Accesorios
 								</div>		
 							</div>
@@ -163,12 +162,10 @@
 								<div class="row">
 									<div class="puntos"> </div>
 									<div class="ml-4">
-										<h1 class="title txt-stroke blue">
-											ACERCA DE
+										<h1 class="title  morado">
+											Acerca de nosotros
 										</h1>
-										<h2 class="title blue">
-											LAMINEX
-										</h2>
+										
 									</div>
 								</div>		
 							</div>
@@ -197,7 +194,7 @@
 						<div class="row">
 							<div class="puntos"> </div>
 							<div class="ml-4">
-								<h1 class="title txt-stroke blue">
+								<h1 class="title  morado">
 									Vestidos
 								</h1>							
 							</div>
@@ -216,7 +213,7 @@
 									<img src="https://placehold.it/534x325" class="img-fluid mw" alt="">
 								</figure>
 								<div class="content">
-									<h1 class="title txt-stroke orange">
+									<h1 class="title morado">
 										Titulo
 									</h1>
 									<div class="paragraph white">
@@ -240,11 +237,68 @@
 							</div>
 						</div>			
 						
-						<a href="<?=RUTA?>blog.php" class="ancla orange mt-5 d-md-block w-100" > Ver más </a>			
+						<a href="<?=RUTA?>vestidos.php" class="ancla morado mt-5 d-md-block w-100" > Ver más </a>			
 					</div>
 				</div>
 				
-				<a href="<?=RUTA?>blog.php" class="ancla orange mt-5 text-center d-block d-md-none w-100" > Ver más </a>
+				<a href="<?=RUTA?>vestidos.php" class="ancla morado mt-5 text-center d-block d-md-none w-100" > Ver más </a>
+			</div>
+		</section>
+		<section class="blog" id="blog">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-11 offset-md-1">
+						<div class="row">
+							<div class="puntos"> </div>
+							<div class="ml-4">
+								<h1 class="title morado">
+									Accesorios
+								</h1>							
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<!-- Cada vista previa del post mide 498.395px en una resolución de 1366.  -->
+				<div class="row carousel-blog">
+					<div class="slider" id="slider-posts" posts="1">
+					
+						<div class="preview-post">
+							<a href=" <?=RUTA?>post.php?id=<?php echo 1 ?> ">
+								<figure>
+									<img src="https://placehold.it/534x325" class="img-fluid mw" alt="">
+								</figure>
+								<div class="content">
+									<h1 class="title morado">
+										Titulo
+									</h1>
+									<div class="paragraph white">
+										descripción								
+									</div>
+								</div>	
+							</a>
+						</div>
+						
+					</div>
+				</div>
+
+				<div class="control row d-none d-md-block w-100 "> 
+					<div class="col-md-10 mx-auto text-center">
+						<div class="row ">
+							<div class="next" id="offset-left">
+								<img src="<?=RUTA?>sprites/left.svg" alt="">
+							</div>
+							<div class="next ml-auto" id="offset-right">
+								<img src="<?=RUTA?>sprites/right.svg" alt="">
+							</div>
+						</div>			
+						
+						<a href="<?=RUTA?>blog.php" class="ancla morado mt-5 d-md-block w-100" > Ver más </a>			
+					</div>
+				</div>
+				
+				<a href="<?=RUTA?>blog.php" class="ancla morado mt-5 text-center d-block d-md-none w-100" > Ver más </a>
 			</div>
 		</section>
 
@@ -258,8 +312,8 @@
 							<div class="col-md-12">
 								<div class="puntos"> </div>
 								<div class="ml-4">
-									<h1 class="title txt-stroke blue">
-										CONTACTO
+									<h1 class="title morado">
+									Contacto
 									</h1>
 									
 								</div>
@@ -288,9 +342,9 @@
 					<div class="col-md-5 col-12">
 						<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14870.881405229547!2d-89.6682854!3d21.2825344!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xf9a9ac2e0f2ba04a!2sMalva%20Studio!5e0!3m2!1ses!2smx!4v1604549446330!5m2!1ses!2smx" width="535" height="273" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 							<div class="datos col-md-7 col-12">
-								<p class="paragraph v2 orange">T.<bold class="paragraph v2 black"> 999 354 7567</bold></p>
-								<p class="paragraph v2 orange">D.<bold class="paragraph v2 black">Calle 31 No 198 A x 88 y 90, 97320, Centro 97320 Progreso, México</bold></p>
-								<p class="paragraph v2 orange">M.<bold class="paragraph v2 black">malvastudio@gmail.com</bold></p>
+								<p class="paragraph v2 lila">T.<bold class="paragraph v2 black"> 999 354 7567</bold></p>
+								<p class="paragraph v2 lila">D.<bold class="paragraph v2 black">Calle 31 No 198 A x 88 y 90, 97320, Centro 97320 Progreso, México</bold></p>
+								<p class="paragraph v2 lila">M.<bold class="paragraph v2 black">malvastudio@gmail.com</bold></p>
 							</div>	
 					</div>
 					

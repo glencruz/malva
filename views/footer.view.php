@@ -1,8 +1,8 @@
 <footer class="footer" id="">
 	<div class="container-fluid">
 		<div class="col-9 col-md-3 mx-auto ml-md-0 brand-container">
-			<figure><img class="img-fluid" src="<?php echo RUTA ?>sprites/logo-footer.svg" ></figure>
-		</div>
+		<h1 class="title white v2 ">Malva Studio</h1>		
+	</div>
 
 		<div class="row mx-auto footer-main">
 			<div class="col-12 col-md-2 menu-list">

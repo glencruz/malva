@@ -6,7 +6,8 @@
 				<div class="row justify-content-between">
 					<div class="logo offset-md-1 pl-4">
 						<a href="<?php echo RUTA ?>" class="mb-0">
-							<img  src="<?=RUTA?>sprites/logo.svg" alt="" class="regular-logo">
+							<!--<img  src="<?=RUTA?>sprites/logo_malva.svg" alt="" class="regular-logo">-->
+							<h1 class="title morado v2 ">Malva Studio</h1>	
 						</a>
 					</div>
 					 <!-- data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation" -->
