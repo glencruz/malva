@@ -17,6 +17,10 @@
 
 	$font_awesome_css = '<link rel="stylesheet" href="'.RUTA.'css/all.css">';
 
+	$datatables_css = '<link rel="stylesheet" href="'.RUTA.'datatables/datatables.min.css">';
+
+	$datatables_boostrap_v4_css = '<link rel="stylesheet" href="'.RUTA.'datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">';
+
 
 	#JS
 	
@@ -29,6 +33,9 @@
 	$font_awesome_js = '<script src="'.RUTA.'js/all.js"></script>';
 
 		$lottie_js = "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.5.8/lottie.min.js\" integrity=\"sha256-QWuFU4W0oiKnJa3GVz5Z+pNf91eTYdmHogcIeJpWON0=\" crossorigin=\"anonymous\"></script>";
+	
+	$datatables_js = '<script src="'.RUTA.'datatables/datatables.min.js"></script>';
+	
 	#Own 
 	#	js
 		$own_file_js = '<script src="'.RUTA.'js/malva.js"></script>';
