@@ -23,6 +23,7 @@
 						<div class="dropdown" style="display: inline;">
 							<a class="btn " style="background-color: transparent; border-color: transparent;" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							<img  src="<?=RUTA?>sprites/user.svg" alt="" class="regular-logo" >
+							<img  src="<?=RUTA?>sprites/down.svg" alt="" class="regular-logo" style="max-height: 20px; margin: 10% 0 0 -80%;">
 							</a>
 
 							<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
