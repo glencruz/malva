@@ -453,7 +453,10 @@ section.caso {
 //and (max-device-width: 1024px)
 @media (max-width: 767px) {
   //Estilos particulares
-
+  
+    #titulo{
+      margin-top: 30%!important;
+    }
   .slider {
     flex-wrap: wrap;
     .preview-post {

@@ -19,7 +19,7 @@
 
 	$datatables_css = '<link rel="stylesheet" href="'.RUTA.'datatables/datatables.min.css">';
 
-	$datatables_boostrap_v4_css = '<link rel="stylesheet" href="'.RUTA.'datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">';
+	$datatables_boostrap_v4_css = '<link rel="stylesheet" href="'.RUTA.'datatables/DataTables-1.10.22/css/dataTables.bootstrap4.min.css">';
 
 
 	#JS

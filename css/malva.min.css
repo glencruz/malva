@@ -533,6 +533,9 @@ section.caso {
     margin-right: 3%; }
 
 @media (max-width: 767px) {
+  #titulo {
+    margin-top: 30% !important; }
+
   .slider {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap; }
