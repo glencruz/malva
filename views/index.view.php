@@ -32,11 +32,10 @@
 
 		<?php require("views/navbar.view.php"); ?>
 
-
 		<section class="banner" id="home">
 			<div class="image">
-				<figure>
-					<img src="https://placehold.it/1366x544"class="d-none d-md-block w-100" alt="...">
+				<figure><!--https://placehold.it/1366x544-->
+					<img src="<?php echo RUTA ?>img/banner.png"class="d-none d-md-block w-100" alt="...">
 					<img src="https://placehold.it/375x460" class="d-block d-md-none w-100" alt="...">
 					
 				</figure>
@@ -46,13 +45,11 @@
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-md-11 offset-md-1">
-							<h1 class="title white v2 mb-5">
+							<h1 class="title lila v2 mb-5">
 							Malva Studio
 							</h1>
 
-							<h2 class="title v2 white mb-5">
-							Boutique
-							</h2>
+							
 						</div>
 						<div class="col-md-5 offset-md-1" >
 							<div class="paragraph white mb-4">
@@ -121,36 +118,7 @@
 		</section>-->
 
 
-		<section class="strip">
-			<div class="container-fluid">
-				<div class="row justify-content-around">
-					<div class="col-md-10 mx-auto">
-						<div class="row justify-content-around">
-						
-							<div class="col-md-4 text-center ">
-								<figure class="mb-5">
-									<img src="https://placehold.it/174x97">
-								</figure>
-
-								<div class="paragraph v3 morado">
-									Vestidos
-								</div>		
-							</div>
-							<div class="col-md-4 text-center ">
-								<figure class="mb-5">
-									<img src="https://placehold.it/174x97">
-								</figure>
-
-								<div class="paragraph v3 morado">
-									Accesorios
-								</div>		
-							</div>
-					
-						</div>
-					</div>	
-				</div>
-			</div>
-		</section>	
+		
 
 
 		<section class="about" id="about">
@@ -171,21 +139,54 @@
 							</div>
 
 							<div class="col-md-12 body">
-								<div class="paragraph black">
-								Lorem Ipsum
+								<div class="paragraph black col-md-10">
+								En Malva Studio encontrarás vestidos de dama para toda ocasión, podrás varios modelos en venta según tus necesidades y a precios muy accesibles.
+								
 								</div>
 							</div>		
 						</div>						
 					</div>
 					<div class="col-md-4" >
 						<figure>
-							<img src="https://placehold.it/422x422" alt="" class="img-fluid mw">
+							<img src="<?php echo RUTA ?>img/chicas_malva.png" alt="" class="img-fluid mw">
 						</figure>
 					</div>
 				</div>
 			</div>
 		</section>
 
+		<section class="strip">
+			<div class="container-fluid">
+				<div class="row justify-content-around">
+					<div class="col-md-10 mx-auto">
+						<div class="row justify-content-around">
+						
+							<div class="col-md-4 text-center ">
+								<figure class="mb-5">
+									<!--<img src="<?php echo RUTA ?>img/vestidos.png"> -->
+									<img style="max-height: 70px;" src="<?php echo RUTA ?>sprites/vestido.svg">
+								</figure>
+
+								<div class="paragraph v3 morado">
+									Vestidos
+								</div>		
+							</div>
+							<div class="col-md-4 text-center ">
+								<figure class="mb-5">
+									<!--<img src="<?php echo RUTA ?>img/accesorios.png"> -->
+									<img style="max-height: 70px;" src="<?php echo RUTA ?>sprites/collar.svg">
+								</figure>
+
+								<div class="paragraph v3 morado">
+									Accesorios
+								</div>		
+							</div>
+					
+						</div>
+					</div>	
+				</div>
+			</div>
+		</section>	
 
 		<section class="blog" id="blog">
 			<div class="container-fluid">
@@ -363,8 +364,9 @@
 		<!-- Javascripts own files  -->		
 		<?php echo $own_file_js; ?>
 
-
+		<?php echo $popper_js; ?>
 		<?php echo $bootstrap_v4_js; ?>
+		
 
 		<?php echo $font_awesome_js; ?>
 		
