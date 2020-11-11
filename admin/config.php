@@ -26,6 +26,8 @@
 
 	$bootstrap_v4_js = '<script src="'.RUTA.'js/bootstrap.min.js"></script>';
 
+	$popper_js = '<script src="'.RUTA.'js/popper.min.js"></script>';
+
 	$font_awesome_js = '<script src="'.RUTA.'js/all.js"></script>';
 
 		$lottie_js = "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.5.8/lottie.min.js\" integrity=\"sha256-QWuFU4W0oiKnJa3GVz5Z+pNf91eTYdmHogcIeJpWON0=\" crossorigin=\"anonymous\"></script>";
