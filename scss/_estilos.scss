@@ -32,6 +32,15 @@ header.header.scroll {
     color: #fff;
   }
 }
+.user-icon {
+  margin: 0 0 0 50%;
+  display: flex;
+  //background-color: #fff;
+  .regular-logo {
+    margin-right: 25px !important;
+    max-height: 50px;
+  }
+}
 /*header.header.mitad {
   background-color: $blue;
   margin-left: 50%;
@@ -449,7 +458,11 @@ section.caso {
     }
   }
 }
-
+.btn-secondary:not(:disabled):not(.disabled).active,
+.btn-secondary:not(:disabled):not(.disabled):active,
+.show > .btn-secondary.dropdown-toggle {
+  color: #aa0095;
+}
 //and (max-device-width: 1024px)
 @media (max-width: 767px) {
   //Estilos particulares
