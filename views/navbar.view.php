@@ -29,6 +29,8 @@
  			<a href="<?php if (isset( $isHome ) ){ echo '#accesorios';} else{ echo RUTA.'#accesorios';}?>">Accesorios</a>
 			<a href="<?php if (isset( $isHome ) ){ echo '#about';} else{ echo RUTA.'#about';}?>">Acerca de</a>
 			<a href="<?php if (isset( $isHome ) ){ echo '#contacto';} else{ echo RUTA.'#contacto';}?>">Contacto</a>
+			<a href="login.php">Iniciar Sesión</a>
+
 			<div class="social-icons">
 			
 					<a target="_blank" href="https://www.facebook.com/malvastudi0"><img src="<?php echo RUTA ?>sprites/facebook.svg" alt=""></a>
