@@ -32,7 +32,16 @@
 
 		<?php require("views/navbar.view.php"); ?>
 
+<div class="video-header wrap">
+	<div class="fullscreen-video-wrap">
+		<video id="bgvid" autoplay loop muted playsinline>
+			<source src="<?php echo RUTA ?>img/video.mp4"  type="video/mp4">
+		</video>
+	</div>
+	
+</div>
 		<section class="banner" id="home">
+
 			<div class="image">
 				<figure><!--https://placehold.it/1366x544-->
 					<img src="<?php echo RUTA ?>img/banner.png"class="d-none d-md-block w-100" alt="...">
@@ -355,6 +364,7 @@
 		</section>
 
 		<?php require("views/footer.view.php"); ?>	
+
 		
 		<!-- jQuery first, then Tether, then Bootstrap JS. -->
 		<?php echo $jquery_js; ?>
