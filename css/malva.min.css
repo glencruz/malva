@@ -57,6 +57,8 @@
     color: black; }
   .paragraph.orange {
     color: #fc8813; }
+  .paragraph.white {
+    color: white; }
   .paragraph.v2 {
     font-size: 1.8rem; }
   .paragraph.v3 {
@@ -172,6 +174,15 @@ header.header.scroll {
             filter: brightness(0) invert(1); }
   header.header.scroll h1 {
     color: #fff; }
+
+.user-icon {
+  margin: 0 0 0 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+  .user-icon .regular-logo {
+    margin-right: 25px !important;
+    max-height: 50px; }
 
 /*header.header.mitad {
   background-color: $blue;
@@ -532,7 +543,15 @@ section.caso {
   section.caso .ml-4 p {
     margin-right: 3%; }
 
+.btn-secondary:not(:disabled):not(.disabled).active,
+.btn-secondary:not(:disabled):not(.disabled):active,
+.show > .btn-secondary.dropdown-toggle {
+  color: #aa0095; }
+
 @media (max-width: 767px) {
+  #titulo {
+    margin-top: 30% !important; }
+
   .slider {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap; }
@@ -680,5 +699,4 @@ section.caso {
 @media screen and (min-width: 1024px) {
   body, html {
     font-size: 10px; } }
-
 /*# sourceMappingURL=malva.min.css.map */

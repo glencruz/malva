@@ -4,4 +4,4 @@
 
 
 
-<?php require("views/admin.accesorios.view.php"); ?>
+<?php require("views/administrador/admin.accesorios.view.php"); ?>

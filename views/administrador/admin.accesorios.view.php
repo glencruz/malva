@@ -38,12 +38,13 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
   </head>
     
   <body>
-     <header>
-     <div class="logo offset-md-1 pl-4">
-        <h1 class="title morado v2">Malva Studio</h1>
-        <h2 class="title morado pt">Accesorios</h2>
-    </div> 
-     </header>    
+
+    <?php require("views/administrador/menu.view.php"); ?>
+
+   
+        
+    <h2 class="title morado pt" style="margin-top:8%; text-align:center;" id="titulo">Accesorios</h2>
+        
       
     <div class="container">
         <div class="row">
@@ -81,9 +82,9 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <td><?php echo $dat['imagen'] ?></td> 
                                 <td><?php 
                                 if($dat['estado'] == 1){
-                                    echo "<button type='button' class='btn btn-success'>Disponible</button>";
+                                    echo "<button type='button' class='btn btn-success btn-desactivar'>Disponible</button>";
                                 }else {
-                                    echo "<button type='button' class='btn btn-danger' id='btn-activar'>Agotado</button>";
+                                    echo "<button type='button' class='btn btn-danger btn-activar'>No disponible</button>";
                                 }
                                 ?>
                                 </td> 
@@ -97,9 +98,10 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                 </div>
         </div>  
-    </div>    
+    </div>
+        
       
-<!--Modal para CRUD-->
+<!--Modal para editar-->
 <div class="modal fade" id="modalCRUD" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -134,7 +136,52 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         </form>    
         </div>
     </div>
-</div>  
+</div>
+
+<!--Modal para agregar-->
+<div class="modal fade" id="modalAgregar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <form id="formAccesoriosA">    
+            <div class="modal-body">
+                <div class="form-group">
+                <label for="idA" class="col-form-label">Código:</label>
+                <input type="text" class="form-control" id="idA">
+                </div> 
+                <div class="form-group">
+                <label for="descripcionA" class="col-form-label">Descripción:</label>
+                <input type="text" class="form-control" id="descripcionA">
+                </div>                
+                <div class="form-group">
+                <label for="precioA" class="col-form-label">Precio:</label>
+                <input type="number" class="form-control" id="precioA">
+                </div>
+                <div class="form-group">
+                <label for="cantidadA" class="col-form-label">Cantidad:</label>
+                <input type="number" class="form-control" id="cantidadA">
+                </div>
+                <div class="form-group">
+                <label for="imagenA" class="col-form-label">Imagen:</label>
+                <input type="text" class="form-control" id="imagenA">
+                </div>
+                <form method='post' action='' enctype="multipart/form-data">
+                Imagen: <input type='file' name='file' id='file' class='form-control' ><br>
+                <input type='button' class='btn btn-info' value='Upload' id='btn_upload'>
+                </form>                             
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+                <button type="submit" id="btnGuardar" class="btn btn-dark">Guardar</button>
+            </div>
+        </form>    
+        </div>
+    </div>
+</div>
       
     <!-- jQuery, Popper.js, Bootstrap JS -->
         <?php echo $jquery_js; ?>
@@ -180,21 +227,77 @@ $(document).ready(function(){
     });
     
 $("#btnNuevo").click(function(){
-    $("#formAccesorios").trigger("reset");
+    $("#formAccesoriosA").trigger("reset");
     $(".modal-header").css("background-color", "#28a745");
     $(".modal-header").css("color", "white");
     $(".modal-title").text("Nuevo Accesorio");            
-    $("#modalCRUD").modal("show");        
+    $("#modalAgregar").modal("show");        
     id=null;
     opcion = 1; //alta
-});    
+});
+
+$(document).on("click", ".btn-desactivar", function(){ 
+    fila = $(this).closest("tr");
+    id = fila.find('td:eq(0)').text();
+    opcion = 4;
+    $.ajax({
+        url: "bd/crud.php",
+        type: "POST",
+        dataType: "json",
+        data: {id:id, opcion:opcion},
+        success: function(data){  
+            console.log(data);
+            id_accesorio = data[0].id_accesorio;            
+            descripcion = data[0].descripcion;
+            precio = data[0].precio;
+            cantidad = data[0].cantidad;
+            imagen = data[0].imagen;
+            estado = data[0].estado;
+            if(estado == 1){
+                estados = "<button type='button' class='btn btn-success btn-desactivar'>Disponible</button>";
+            }
+            else {
+                estados = "<button type='button' class='btn btn-danger btn-activar'>No disponible</button>";
+            }
+            tablaAccesorios.row(fila).data([id_accesorio,descripcion,precio,cantidad,imagen,estados]).draw();}            
+                
+    });
+});
+
+$(document).on("click", ".btn-activar", function(){ 
+    fila = $(this).closest("tr");
+    id = fila.find('td:eq(0)').text();
+    opcion = 5;
+    $.ajax({
+        url: "bd/crud.php",
+        type: "POST",
+        dataType: "json",
+        data: {id:id, opcion:opcion},
+        success: function(data){  
+            console.log(data);
+            id_accesorio = data[0].id_accesorio;            
+            descripcion = data[0].descripcion;
+            precio = data[0].precio;
+            cantidad = data[0].cantidad;
+            imagen = data[0].imagen;
+            estado = data[0].estado;
+            if(estado == 1){
+                estados = "<button type='button' class='btn btn-success btn-desactivar'>Disponible</button>";
+            }
+            else {
+                estados = "<button type='button' class='btn btn-danger btn-activar'>No disponible</button>";
+            }
+            tablaAccesorios.row(fila).data([id_accesorio,descripcion,precio,cantidad,imagen,estados]).draw();}            
+                
+    });
+});
     
 var fila; //capturar la fila para editar o borrar el registro
     
 //botón EDITAR    
 $(document).on("click", ".btnEditar", function(){
     fila = $(this).closest("tr");
-    id = parseInt(fila.find('td:eq(0)').text());
+    id = fila.find('td:eq(0)').text();
     descripcion = fila.find('td:eq(1)').text();
     precio = parseInt(fila.find('td:eq(2)').text());
     cantidad = parseInt(fila.find('td:eq(3)').text());
@@ -217,7 +320,7 @@ $(document).on("click", ".btnEditar", function(){
 //botón BORRAR
 $(document).on("click", ".btnBorrar", function(){    
     fila = $(this);
-    id = parseInt($(this).closest("tr").find('td:eq(0)').text());
+    id = $(this).closest("tr").find('td:eq(0)').text();
     opcion = 3 //borrar
     var respuesta = confirm("¿Está seguro de eliminar el accesorio: "+id+"?");
     if(respuesta){
@@ -253,18 +356,50 @@ $("#formAccesorios").submit(function(e){
             imagen = data[0].imagen;
             estado = data[0].estado;
             if(estado == 1){
-                estados = "<button type='button' class='btn btn-success'>Disponible</button>";
+                estados = "<button type='button' class='btn btn-success btn-desactivar'>Disponible</button>";
             }
             else {
-                estados = "<button type='button' class='btn btn-danger' id='btn-activar'>Agotado</button>";
+                estados = "<button type='button' class='btn btn-danger btn-activar'>No disponible</button>";
             }
-            if(opcion == 1){tablaAccesorios.row.add([id_accesorio,descripcion,precio,cantidad,imagen,estados]).draw();}
-            else{tablaAccesorios.row(fila).data([id_accesorio,descripcion,precio,cantidad,imagen,estados]).draw();}            
+            tablaAccesorios.row(fila).data([id_accesorio,descripcion,precio,cantidad,imagen,estados]).draw();            
         }        
     });
     $("#modalCRUD").modal("hide");    
     
-});    
+});
+
+$("#formAccesoriosA").submit(function(e){
+    e.preventDefault();
+    id = $.trim($("#idA").val());    
+    descripcion = $.trim($("#descripcionA").val());
+    precio = $.trim($("#precioA").val());
+    cantidad = $.trim($("#cantidadA").val());
+    imagen = $.trim($("#imagenA").val());    
+    $.ajax({
+        url: "bd/crud.php",
+        type: "POST",
+        dataType: "json",
+        data: {descripcion:descripcion, precio:precio, cantidad:cantidad, imagen:imagen, id:id, opcion:opcion},
+        success: function(data){  
+            console.log(data);
+            id_accesorio = data[0].id_accesorio;            
+            descripcion = data[0].descripcion;
+            precio = data[0].precio;
+            cantidad = data[0].cantidad;
+            imagen = data[0].imagen;
+            estado = data[0].estado;
+            if(estado == 1){
+                estados = "<button type='button' class='btn btn-success btn-desactivar'>Disponible</button>";
+            }
+            else {
+                estados = "<button type='button' class='btn btn-danger btn-activar'>No disponible</button>";
+            }
+            tablaAccesorios.row.add([id_accesorio,descripcion,precio,cantidad,imagen,estados]).draw();            
+        }        
+    });
+    $("#modalAgregar").modal("hide");    
+    
+});
     
 });
 </script>    
