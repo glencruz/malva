@@ -168,7 +168,11 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                 <div class="form-group">
                 <label for="imagenA" class="col-form-label">Imagen:</label>
                 <input type="text" class="form-control" id="imagenA">
-                </div>                             
+                </div>
+                <form method='post' action='' enctype="multipart/form-data">
+                Imagen: <input type='file' name='file' id='file' class='form-control' ><br>
+                <input type='button' class='btn btn-info' value='Upload' id='btn_upload'>
+                </form>                             
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>

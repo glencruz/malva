@@ -4,37 +4,51 @@ $objeto = new Conexion();
 $conexion = $objeto->Conectar();
 
 // Recepción de los datos enviados mediante POST desde el JS   
-
+$codigo = (isset($_POST['codigo'])) ? $_POST['codigo'] : '';
 $descripcion = (isset($_POST['descripcion'])) ? $_POST['descripcion'] : '';
 $precio = (isset($_POST['precio'])) ? $_POST['precio'] : '';
-$cantidad = (isset($_POST['cantidad'])) ? $_POST['cantidad'] : '';
+$cantidadS = (isset($_POST['cantidadS'])) ? $_POST['cantidadS'] : '';
+$cantidadM = (isset($_POST['cantidadM'])) ? $_POST['cantidadM'] : '';
+$cantidadL = (isset($_POST['cantidadL'])) ? $_POST['cantidadL'] : '';
 $imagen = (isset($_POST['imagen'])) ? $_POST['imagen'] : '';
 $id = (isset($_POST['id'])) ? $_POST['id'] : '';
 $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
 
 switch($opcion){
     case 1: //alta
-        $consulta = "INSERT INTO accesorios (id_accesorio, descripcion, precio, cantidad, imagen, estado) VALUES('$id', '$descripcion', '$precio', '$cantidad', '$imagen', 1) ";			
+        $consulta = "INSERT INTO vestidos (codigo, descripcion, precio, imagen, estado) VALUES('$codigo', '$descripcion', '$precio', '$imagen', 1) ";			
         $resultado = $conexion->prepare($consulta);
-        $resultado->execute(); 
+        $resultado->execute();
+        
+        $consulta = "INSERT INTO rel_tallas (id_vestido, id_talla, cantidad) VALUES((SELECT MAX(id_vestido) AS id FROM vestidos), 1, '$cantidadS') ";			
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();
 
-        $consulta = "SELECT id_accesorio, descripcion, precio, cantidad, imagen, estado FROM accesorios WHERE id_accesorio='$id' ";
+        $consulta = "INSERT INTO rel_tallas (id_vestido, id_talla, cantidad) VALUES((SELECT MAX(id_vestido) AS id FROM vestidos), 2, '$cantidadM') ";			
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();
+
+        $consulta = "INSERT INTO rel_tallas (id_vestido, id_talla, cantidad) VALUES((SELECT MAX(id_vestido) AS id FROM vestidos), 3, '$cantidadL') ";			
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();
+
+        $consulta = "SELECT id_vestido, codigo, descripcion, precio, imagen, estado FROM vestidos ORDER BY id_vestido DESC LIMIT 1";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
     case 2: //modificación
-        $consulta = "UPDATE accesorios SET descripcion='$descripcion', precio='$precio', cantidad='$cantidad', imagen='$imagen' WHERE id_accesorio='$id' ";		
+        $consulta = "UPDATE vestidos SET codigo='$codigo', descripcion='$descripcion', precio='$precio', imagen='$imagen' WHERE id_vestido='$id' ";		
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();        
         
-        $consulta = "SELECT id_accesorio, descripcion, precio, cantidad, imagen, estado FROM accesorios WHERE id_accesorio='$id' ";       
+        $consulta = "SELECT id_vestido, codigo, descripcion, precio, imagen, estado FROM vestidos WHERE id_vestido='$id' ";       
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         break;        
     case 3://baja
-        $consulta = "DELETE FROM accesorios WHERE id_accesorio='$id' ";		
+        $consulta = "DELETE FROM vestidos WHERE id_vestido='$id' ";		
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);                           
@@ -60,8 +74,10 @@ switch($opcion){
         $resultado->execute();
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
+
     
 }
 
 print json_encode($data, JSON_UNESCAPED_UNICODE); //enviar el array final en formato json a JS
 $conexion = NULL;
+?>

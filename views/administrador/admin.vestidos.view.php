@@ -67,7 +67,6 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <th>Precio</th>
                                 <th>Imagen</th>
                                 <th>Estado</th>
-                                <th>Tallas</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -88,8 +87,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                                     echo "<button type='button' class='btn btn-danger btn-activar'>No disponible</button>";
                                 }
                                 ?>
-                                </td>
-                                <td></td>  
+                                </td>  
                                 <td></td>
                             </tr>
                             <?php
@@ -173,10 +171,6 @@ $(document).ready(function(){
         "targets": -1,
         "data":null,
         "defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btnEditar'>Editar</button><button class='btn btn-danger btnBorrar'>Borrar</button></div></div>"  
-       },{
-        "targets": -2,
-        "data":null,
-        "defaultContent": "<div class='text-center'><button class='btn btn-primary btnTalla'>Tallas</button></div>"
        }],
         
         //Para cambiar el lenguaje a español
@@ -273,11 +267,18 @@ $(document).on("click", ".btnEditar", function(){
     descripcion = fila.find('td:eq(2)').text();
     precio = parseInt(fila.find('td:eq(3)').text());
     imagen = fila.find('td:eq(4)').text();
-    
+    cantidads = 1;
+    cantidadm = 2;
+    cantidadl= 2;
+
+    $("#cantidadS").val(cantidads);   
+    $("#cantidadM").val(cantidadm);
+    $("#cantidadL").val(cantidadl);
     $("#codigo").val(codigo);   
     $("#descripcion").val(descripcion);
     $("#precio").val(precio);
     $("#imagen").val(imagen);
+
     opcion = 2; //editar
     
     $(".modal-header").css("background-color", "#007bff");
@@ -295,34 +296,37 @@ $(document).on("click", ".btnBorrar", function(){
     var respuesta = confirm("¿Está seguro de eliminar el vestido: "+id+"?");
     if(respuesta){
         $.ajax({
-            url: "bd/crud.php",
+            url: "bd/crudvestidos.php",
             type: "POST",
             dataType: "json",
             data: {opcion:opcion, id:id},
             success: function(){
-                tablaAccesorios.row(fila.parents('tr')).remove().draw();
+                tablaVestidos.row(fila.parents('tr')).remove().draw();
             }
         });
     }   
 });
     
-$("#formAccesorios").submit(function(e){
+$("#formVestidos").submit(function(e){
     e.preventDefault();    
+    codigo = $.trim($("#codigo").val());
     descripcion = $.trim($("#descripcion").val());
     precio = $.trim($("#precio").val());
-    cantidad = $.trim($("#cantidad").val());
+    cantidadS = $.trim($("#cantidadS").val());
+    cantidadM = $.trim($("#cantidadM").val());
+    cantidadL = $.trim($("#cantidadL").val());
     imagen = $.trim($("#imagen").val());    
     $.ajax({
-        url: "bd/crud.php",
+        url: "bd/crudvestidos.php",
         type: "POST",
         dataType: "json",
-        data: {descripcion:descripcion, precio:precio, cantidad:cantidad, imagen:imagen, id:id, opcion:opcion},
+        data: {codigo:codigo, descripcion:descripcion, precio:precio, cantidadS:cantidadS, cantidadM:cantidadM, cantidadL:cantidadL, imagen:imagen, id:id, opcion:opcion},
         success: function(data){  
             console.log(data);
-            id_accesorio = data[0].id_accesorio;            
+            id_vestido = data[0].id_vestido;
+            codigo = data[0].codigo;            
             descripcion = data[0].descripcion;
             precio = data[0].precio;
-            cantidad = data[0].cantidad;
             imagen = data[0].imagen;
             estado = data[0].estado;
             if(estado == 1){
@@ -331,43 +335,14 @@ $("#formAccesorios").submit(function(e){
             else {
                 estados = "<button type='button' class='btn btn-danger btn-activar'>No disponible</button>";
             }
-            tablaAccesorios.row(fila).data([id_accesorio,descripcion,precio,cantidad,imagen,estados]).draw();            
+            if(opcion == 1){
+            tablaVestidos.row.add([id_vestido,codigo,descripcion,precio,imagen,estados]).draw();}
+            else{
+                tablaVestidos.row(fila).data([id_vestido,codigo,descripcion,precio,imagen,estados]).draw();
+            }            
         }        
     });
-    $("#modalCRUD").modal("hide");    
-    
-});
-
-$("#formAccesoriosA").submit(function(e){
-    e.preventDefault();
-    id = $.trim($("#idA").val());    
-    descripcion = $.trim($("#descripcionA").val());
-    precio = $.trim($("#precioA").val());
-    cantidad = $.trim($("#cantidadA").val());
-    imagen = $.trim($("#imagenA").val());    
-    $.ajax({
-        url: "bd/crud.php",
-        type: "POST",
-        dataType: "json",
-        data: {descripcion:descripcion, precio:precio, cantidad:cantidad, imagen:imagen, id:id, opcion:opcion},
-        success: function(data){  
-            console.log(data);
-            id_accesorio = data[0].id_accesorio;            
-            descripcion = data[0].descripcion;
-            precio = data[0].precio;
-            cantidad = data[0].cantidad;
-            imagen = data[0].imagen;
-            estado = data[0].estado;
-            if(estado == 1){
-                estados = "<button type='button' class='btn btn-success btn-desactivar'>Disponible</button>";
-            }
-            else {
-                estados = "<button type='button' class='btn btn-danger btn-activar'>No disponible</button>";
-            }
-            tablaAccesorios.row.add([id_accesorio,descripcion,precio,cantidad,imagen,estados]).draw();            
-        }        
-    });
-    $("#modalAgregar").modal("hide");    
+    $("#modalVestidos").modal("hide");    
     
 });
     
