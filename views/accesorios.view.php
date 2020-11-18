@@ -35,7 +35,7 @@
 							</div>
 							<div class="ml-4">
 								<h1 class="title morado pt">
-									Vestidos
+								Accesorios
 								</h1>							
 							</div>
 						</div>
@@ -44,23 +44,23 @@
 				
 
 			<div class="row carousel-blog">
-					<div class="slider" id="slider-posts" posts="1">
-					
+					<div class="slider" id="slider-posts" posts="<?php echo count($accesorios) ?>">
+					<?php foreach ($accesorios as $accesorio): ?>
 						<div class="preview-post">
-							<a href=" <?=RUTA?>post.php ">
+							<a href=" <?=RUTA?>accesorio.php?id=<?php echo $accesorio['id_accesorio'] ?> ">
 								<figure>
-									<img src="https://placehold.it/534x325" class="img-fluid mw" alt="">
+									<img src="<?php echo $accesorio['imagen'] ?> " class="img-fluid mw" alt="">
 								</figure>
 								<div class="content">
 									<h1 class="title morado">
-										Titulo
+									<?php echo $accesorio['descripcion'] ?>
 									</h1>
-									<div class="paragraph white">
-									Descripción								</div>
+									<div class="paragraph black">
+									$ <?php echo $accesorio['precio'] ?> MXN								</div>
 								</div>	
 							</a>
 						</div>
-					
+						<?php endforeach ?>	
 					</div>
 				</div>
 

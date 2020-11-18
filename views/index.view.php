@@ -215,24 +215,27 @@
 
 				<!-- Cada vista previa del post mide 498.395px en una resolución de 1366.  -->
 				<div class="row carousel-blog">
-					<div class="slider" id="slider-posts" posts="1">
-					
+					<div class="slider" id="slider-posts" posts="<?php echo count($vestidos) ?>">
+					<?php foreach ($vestidos as $vestido): ?>
 						<div class="preview-post">
-							<a href=" <?=RUTA?>post.php?id=<?php echo 1 ?> ">
-								<figure>
-									<img src="https://placehold.it/534x325" class="img-fluid mw" alt="">
+							<a href=" <?=RUTA?>vestido.php?id=<?php echo $vestido['id_vestido'] ?> ">
+								<figure><!--https://placehold.it/534x325 -->
+									<img src="<?php echo $vestido['imagen'] ?> " class="img-fluid mw" style="max-width:50%;" alt="">
 								</figure>
 								<div class="content">
 									<h1 class="title morado">
-										Titulo
+									<?php echo $vestido['codigo'] ?>
+
 									</h1>
-									<div class="paragraph white">
-										descripción								
+									<div class="paragraph black">
+									<?php echo $vestido['descripcion'] ?>
+									<br>
+									$ <?php echo $vestido['precio'] ?> MXN								
 									</div>
 								</div>	
 							</a>
 						</div>
-						
+					<?php endforeach ?>	
 					</div>
 				</div>
 
@@ -254,6 +257,10 @@
 				<a href="<?=RUTA?>vestidos.php" class="ancla morado mt-5 text-center d-block d-md-none w-100" > Ver más </a>
 			</div>
 		</section>
+		
+
+
+
 		<section class="blog" id="blog">
 			<div class="container-fluid">
 				<div class="row">
@@ -261,7 +268,7 @@
 						<div class="row">
 							<div class="puntos"> </div>
 							<div class="ml-4">
-								<h1 class="title morado">
+								<h1 class="title  morado">
 									Accesorios
 								</h1>							
 							</div>
@@ -272,45 +279,48 @@
 
 				<!-- Cada vista previa del post mide 498.395px en una resolución de 1366.  -->
 				<div class="row carousel-blog">
-					<div class="slider" id="slider-posts" posts="1">
-					
-						<div class="preview-post">
-							<a href=" <?=RUTA?>post.php?id=<?php echo 1 ?> ">
-								<figure>
-									<img src="https://placehold.it/534x325" class="img-fluid mw" alt="">
+					<div class="slider" id="slider-posts2" posts="<?php echo count($accesorios) ?>">
+					<?php foreach ($accesorios as $accesorio): ?>
+						<div class="preview-post2">
+							<a href=" <?=RUTA?>accesorio.php?id=<?php echo $accesorio['id_accesorio'] ?> ">
+								<figure><!--https://placehold.it/534x325 -->
+									<img src="<?php echo $accesorio['imagen'] ?> " class="img-fluid mw" style="max-width:50%;" alt="">
 								</figure>
 								<div class="content">
 									<h1 class="title morado">
-										Titulo
+									<?php echo $accesorio['descripcion'] ?>
 									</h1>
-									<div class="paragraph white">
-										descripción								
+									<div class="paragraph black">
+									$ <?php echo $accesorio['precio'] ?> MXN								
 									</div>
 								</div>	
 							</a>
 						</div>
-						
+					<?php endforeach ?>	
 					</div>
 				</div>
 
 				<div class="control row d-none d-md-block w-100 "> 
 					<div class="col-md-10 mx-auto text-center">
 						<div class="row ">
-							<div class="next" id="offset-left">
+							<div class="next" id="offset-left2">
 								<img src="<?=RUTA?>sprites/left.svg" alt="">
 							</div>
-							<div class="next ml-auto" id="offset-right">
+							<div class="next ml-auto" id="offset-right2">
 								<img src="<?=RUTA?>sprites/right.svg" alt="">
 							</div>
 						</div>			
 						
-						<a href="<?=RUTA?>blog.php" class="ancla morado mt-5 d-md-block w-100" > Ver más </a>			
+						<a href="<?=RUTA?>accesorios.php" class="ancla morado mt-5 d-md-block w-100" > Ver más </a>			
 					</div>
 				</div>
 				
-				<a href="<?=RUTA?>blog.php" class="ancla morado mt-5 text-center d-block d-md-none w-100" > Ver más </a>
+				<a href="<?=RUTA?>accesorios.php" class="ancla morado mt-5 text-center d-block d-md-none w-100" > Ver más </a>
 			</div>
 		</section>
+
+
+
 
 
 
