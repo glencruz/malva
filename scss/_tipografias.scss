@@ -15,7 +15,7 @@ $gris: #e6e1e5;
 
 .img-fluid {
   &.mw {
-    min-width: 100%;
+    min-width: 50%;
   }
 }
 
@@ -137,7 +137,8 @@ $gris: #e6e1e5;
   transition: all ease 0.8s;
 
   &:hover {
-    box-shadow: inset 0 -70px 0 0 $morado;
+    box-shadow: inset 0 -70px 0 0 $white;
+    color: $morado;
   }
 }
 figure.sombra {

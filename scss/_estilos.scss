@@ -267,6 +267,34 @@ section.blog {
           bottom: 1.4rem;
         }
       }
+      .preview-post2 {
+        margin-right: 3rem;
+        flex: 0 0 41.666667%;
+        max-width: 41.666667%;
+
+        position: relative;
+        a {
+          figure {
+            overflow: hidden;
+            margin-bottom: 0;
+
+            img {
+              transition: 0.5s;
+              transform: scale(1.1);
+            }
+          }
+          &:hover {
+            img {
+              transform: scale(1);
+            }
+          }
+        }
+        .content {
+          padding: 0 2.3rem 1.4rem 2.3rem;
+          position: absolute;
+          bottom: 1.4rem;
+        }
+      }
     }
   }
 
@@ -464,54 +492,57 @@ section.caso {
   color: #aa0095;
 }
 
-
-
-
-
-
-
-
-
-.video-header{height: 100vh;
-         display: flex;
-       align-items: center;
-       color: #fff;
-  
+.video-header {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  color: #fff;
 }
 
-.wrap{
+.wrap {
   max-width: 960px;
   padding-left: 1rem;
   padding-right: 1rem;
-  margin:auto;
+  margin: auto;
   text-align: center;
-  
 }
-.fullscreen-video-wrap{
+.fullscreen-video-wrap {
   position: absolute;
   top: 0;
   left: 0;
   height: 100vh;
   width: 100%;
   overflow: hidden;
-  
 }
-.fullscreen-video-wrap video{
+.fullscreen-video-wrap video {
   min-height: 100%;
   min-width: 100%;
-  
 }
 
 //and (max-device-width: 1024px)
 @media (max-width: 767px) {
   //Estilos particulares
-  
-    #titulo{
-      margin-top: 30%!important;
-    }
+
+  #titulo {
+    margin-top: 30% !important;
+  }
   .slider {
     flex-wrap: wrap;
     .preview-post {
+      flex: 0 0 100%;
+      padding-bottom: 5%;
+      margin-left: -6%;
+      flex: 0 0 100% !important;
+      max-width: 100% !important;
+      .title {
+        line-height: 20px;
+      }
+      .paragraph {
+        font-size: 1.3rem;
+        line-height: 15px;
+      }
+    }
+    .preview-post2 {
       flex: 0 0 100%;
       padding-bottom: 5%;
       margin-left: -6%;

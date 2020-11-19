@@ -44,23 +44,25 @@
 				
 
 			<div class="row carousel-blog">
-					<div class="slider" id="slider-posts" posts="1">
-					
+					<div class="slider" id="slider-posts" posts="<?php echo count($vestidos) ?>">
+					<?php foreach ($vestidos as $vestido): ?>
 						<div class="preview-post">
-							<a href=" <?=RUTA?>post.php ">
+							<a href=" <?=RUTA?>vestido.php?id=<?php echo $vestido['id_vestido'] ?> ">
 								<figure>
-									<img src="https://placehold.it/534x325" class="img-fluid mw" alt="">
+									<img src="<?php echo RUTA ?>bd/<?php echo $vestido['imagen'] ?> " class="img-fluid mw" alt="">
 								</figure>
 								<div class="content">
 									<h1 class="title morado">
-										Titulo
+									<?php echo $vestido['codigo'] ?>
 									</h1>
-									<div class="paragraph white">
-									Descripción								</div>
+									<div class="paragraph black">
+									<?php echo $vestido['descripcion'] ?>
+									<br>
+									$ <?php echo $vestido['precio'] ?> MXN							</div>
 								</div>	
 							</a>
 						</div>
-					
+						<?php endforeach ?>	
 					</div>
 				</div>
 

@@ -5,7 +5,7 @@
   color: #fff !important; }
 
 .img-fluid.mw {
-  min-width: 100%; }
+  min-width: 50%; }
 
 .puntos {
   width: 11px;
@@ -91,8 +91,9 @@
   -webkit-transition: all ease 0.8s;
   transition: all ease 0.8s; }
   .button:hover {
-    -webkit-box-shadow: inset 0 -70px 0 0 #aa0095;
-            box-shadow: inset 0 -70px 0 0 #aa0095; }
+    -webkit-box-shadow: inset 0 -70px 0 0 white;
+            box-shadow: inset 0 -70px 0 0 white;
+    color: #aa0095; }
 
 figure.sombra {
   position: relative; }
@@ -176,7 +177,7 @@ header.header.scroll {
     color: #fff; }
 
 .user-icon {
-  margin: 0 0 0 50%;
+  margin: 0 0 0 40%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex; }
@@ -375,6 +376,28 @@ section.blog {
           -webkit-transform: scale(1);
                   transform: scale(1); }
         section.blog .carousel-blog .slider .preview-post .content {
+          padding: 0 2.3rem 1.4rem 2.3rem;
+          position: absolute;
+          bottom: 1.4rem; }
+      section.blog .carousel-blog .slider .preview-post2 {
+        margin-right: 3rem;
+        -webkit-box-flex: 0;
+            -ms-flex: 0 0 41.666667%;
+                flex: 0 0 41.666667%;
+        max-width: 41.666667%;
+        position: relative; }
+        section.blog .carousel-blog .slider .preview-post2 a figure {
+          overflow: hidden;
+          margin-bottom: 0; }
+          section.blog .carousel-blog .slider .preview-post2 a figure img {
+            -webkit-transition: 0.5s;
+            transition: 0.5s;
+            -webkit-transform: scale(1.1);
+                    transform: scale(1.1); }
+        section.blog .carousel-blog .slider .preview-post2 a:hover img {
+          -webkit-transform: scale(1);
+                  transform: scale(1); }
+        section.blog .carousel-blog .slider .preview-post2 .content {
           padding: 0 2.3rem 1.4rem 2.3rem;
           position: absolute;
           bottom: 1.4rem; }
@@ -595,6 +618,19 @@ section.caso {
       .slider .preview-post .title {
         line-height: 20px; }
       .slider .preview-post .paragraph {
+        font-size: 1.3rem;
+        line-height: 15px; }
+    .slider .preview-post2 {
+      -webkit-box-flex: 0;
+          -ms-flex: 0 0 100%;
+              flex: 0 0 100%;
+      padding-bottom: 5%;
+      margin-left: -6%;
+      flex: 0 0 100% !important;
+      max-width: 100% !important; }
+      .slider .preview-post2 .title {
+        line-height: 20px; }
+      .slider .preview-post2 .paragraph {
         font-size: 1.3rem;
         line-height: 15px; }
 
