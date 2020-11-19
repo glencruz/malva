@@ -79,7 +79,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <td><?php echo $dat['descripcion'] ?></td> 
                                 <td><?php echo $dat['precio'] ?></td>  
                                 <td><?php echo $dat['cantidad'] ?></td> 
-                                <td><?php echo $dat['imagen'] ?></td> 
+                                <td><img src="<?php echo RUTA ?>bd/<?php echo $dat['imagen'] ?>" style="max-width:100px;"></td> 
                                 <td><?php 
                                 if($dat['estado'] == 1){
                                     echo "<button type='button' class='btn btn-success btn-desactivar'>Disponible</button>";
@@ -124,10 +124,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                 <label for="cantidad" class="col-form-label">Cantidad:</label>
                 <input type="number" class="form-control" id="cantidad">
                 </div>
-                <div class="form-group">
-                <label for="imagen" class="col-form-label">Imagen:</label>
-                <input type="text" class="form-control" id="imagen">
-                </div>                             
+                Imagen: <input type='file' name='filee' id='filee' class='form-control' ><br>                            
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
@@ -147,7 +144,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
             </div>
-        <form id="formAccesoriosA">    
+        <form id="formAccesoriosA" method='post' action='' enctype="multipart/form-data">    
             <div class="modal-body">
                 <div class="form-group">
                 <label for="idA" class="col-form-label">Código:</label>
@@ -165,14 +162,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                 <label for="cantidadA" class="col-form-label">Cantidad:</label>
                 <input type="number" class="form-control" id="cantidadA">
                 </div>
-                <div class="form-group">
-                <label for="imagenA" class="col-form-label">Imagen:</label>
-                <input type="text" class="form-control" id="imagenA">
-                </div>
-                <form method='post' action='' enctype="multipart/form-data">
-                Imagen: <input type='file' name='file' id='file' class='form-control' ><br>
-                <input type='button' class='btn btn-info' value='Upload' id='btn_upload'>
-                </form>                             
+                Imagen: <input type='file' name='file' id='file' class='form-control' ><br>                       
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
@@ -232,7 +222,6 @@ $("#btnNuevo").click(function(){
     $(".modal-header").css("color", "white");
     $(".modal-title").text("Nuevo Accesorio");            
     $("#modalAgregar").modal("show");        
-    id=null;
     opcion = 1; //alta
 });
 
@@ -244,7 +233,7 @@ $(document).on("click", ".btn-desactivar", function(){
         url: "bd/crud.php",
         type: "POST",
         dataType: "json",
-        data: {id:id, opcion:opcion},
+        data: {id:id, opciones:opcion},
         success: function(data){  
             console.log(data);
             id_accesorio = data[0].id_accesorio;            
@@ -259,7 +248,8 @@ $(document).on("click", ".btn-desactivar", function(){
             else {
                 estados = "<button type='button' class='btn btn-danger btn-activar'>No disponible</button>";
             }
-            tablaAccesorios.row(fila).data([id_accesorio,descripcion,precio,cantidad,imagen,estados]).draw();}            
+            imagenes = "<img style='max-width:100px;' src='http://localhost/malva/bd/"+imagen+"'>";
+            tablaAccesorios.row(fila).data([id_accesorio,descripcion,precio,cantidad,imagenes,estados]).draw();}            
                 
     });
 });
@@ -272,7 +262,7 @@ $(document).on("click", ".btn-activar", function(){
         url: "bd/crud.php",
         type: "POST",
         dataType: "json",
-        data: {id:id, opcion:opcion},
+        data: {id:id, opciones:opcion},
         success: function(data){  
             console.log(data);
             id_accesorio = data[0].id_accesorio;            
@@ -287,7 +277,8 @@ $(document).on("click", ".btn-activar", function(){
             else {
                 estados = "<button type='button' class='btn btn-danger btn-activar'>No disponible</button>";
             }
-            tablaAccesorios.row(fila).data([id_accesorio,descripcion,precio,cantidad,imagen,estados]).draw();}            
+            imagenes = "<img style='max-width:100px;' src='http://localhost/malva/bd/"+imagen+"'>";
+            tablaAccesorios.row(fila).data([id_accesorio,descripcion,precio,cantidad,imagenes,estados]).draw();}            
                 
     });
 });
@@ -301,13 +292,11 @@ $(document).on("click", ".btnEditar", function(){
     descripcion = fila.find('td:eq(1)').text();
     precio = parseInt(fila.find('td:eq(2)').text());
     cantidad = parseInt(fila.find('td:eq(3)').text());
-    imagen = fila.find('td:eq(4)').text();
     
     
     $("#descripcion").val(descripcion);
     $("#precio").val(precio);
     $("#cantidad").val(cantidad);
-    $("#imagen").val(imagen);
     opcion = 2; //editar
     
     $(".modal-header").css("background-color", "#007bff");
@@ -328,7 +317,7 @@ $(document).on("click", ".btnBorrar", function(){
             url: "bd/crud.php",
             type: "POST",
             dataType: "json",
-            data: {opcion:opcion, id:id},
+            data: {id:id, opciones:opcion},
             success: function(){
                 tablaAccesorios.row(fila.parents('tr')).remove().draw();
             }
@@ -338,15 +327,25 @@ $(document).on("click", ".btnBorrar", function(){
     
 $("#formAccesorios").submit(function(e){
     e.preventDefault();    
-    descripcion = $.trim($("#descripcion").val());
-    precio = $.trim($("#precio").val());
-    cantidad = $.trim($("#cantidad").val());
-    imagen = $.trim($("#imagen").val());    
+    descripcions = $.trim($("#descripcion").val());
+    precios = $.trim($("#precio").val());
+    cantidads = $.trim($("#cantidad").val());
+    
+    var fd = new FormData();
+    var files = $('#filee')[0].files[0];
+    fd.append('file',files);
+    fd.append('id',id);
+    fd.append('descripcion',descripcions);
+    fd.append('precio',precios);
+    fd.append('cantidad',cantidads);
+    fd.append('opciones',opcion);
     $.ajax({
         url: "bd/crud.php",
         type: "POST",
         dataType: "json",
-        data: {descripcion:descripcion, precio:precio, cantidad:cantidad, imagen:imagen, id:id, opcion:opcion},
+        data: fd,
+        contentType: false,
+        processData: false,
         success: function(data){  
             console.log(data);
             id_accesorio = data[0].id_accesorio;            
@@ -361,7 +360,8 @@ $("#formAccesorios").submit(function(e){
             else {
                 estados = "<button type='button' class='btn btn-danger btn-activar'>No disponible</button>";
             }
-            tablaAccesorios.row(fila).data([id_accesorio,descripcion,precio,cantidad,imagen,estados]).draw();            
+            imagenes = "<img style='max-width:100px;' src='http://localhost/malva/bd/"+imagen+"'>";
+            tablaAccesorios.row(fila).data([id_accesorio,descripcion,precio,cantidad,imagenes,estados]).draw();            
         }        
     });
     $("#modalCRUD").modal("hide");    
@@ -370,16 +370,26 @@ $("#formAccesorios").submit(function(e){
 
 $("#formAccesoriosA").submit(function(e){
     e.preventDefault();
-    id = $.trim($("#idA").val());    
-    descripcion = $.trim($("#descripcionA").val());
-    precio = $.trim($("#precioA").val());
-    cantidad = $.trim($("#cantidadA").val());
-    imagen = $.trim($("#imagenA").val());    
+    ids = $.trim($("#idA").val());    
+    descripcions = $.trim($("#descripcionA").val());
+    precios = $.trim($("#precioA").val());
+    cantidads = $.trim($("#cantidadA").val());
+    
+    var fd = new FormData();
+    var files = $('#file')[0].files[0];
+    fd.append('file',files);
+    fd.append('id',ids);
+    fd.append('descripcion',descripcions);
+    fd.append('precio',precios);
+    fd.append('cantidad',cantidads);
+    fd.append('opciones',opcion);
     $.ajax({
         url: "bd/crud.php",
         type: "POST",
-        dataType: "json",
-        data: {descripcion:descripcion, precio:precio, cantidad:cantidad, imagen:imagen, id:id, opcion:opcion},
+        data: fd,
+        contentType: false,
+        processData: false,
+        dataType: 'json',
         success: function(data){  
             console.log(data);
             id_accesorio = data[0].id_accesorio;            
@@ -394,7 +404,8 @@ $("#formAccesoriosA").submit(function(e){
             else {
                 estados = "<button type='button' class='btn btn-danger btn-activar'>No disponible</button>";
             }
-            tablaAccesorios.row.add([id_accesorio,descripcion,precio,cantidad,imagen,estados]).draw();            
+            imagenes = "<img style='max-width:100px;' src='http://localhost/malva/bd/"+imagen+"'>";
+            tablaAccesorios.row.add([id_accesorio,descripcion,precio,cantidad,imagenes,estados]).draw();            
         }        
     });
     $("#modalAgregar").modal("hide");    

@@ -55,7 +55,7 @@
 					</div>
 					<div class="col-md-6">
 						<figure>
-							<img src="<?php echo $accesorio['imagen'] ?> " alt="" class="img-fluid mw">
+							<img src="<?php echo RUTA ?>bd/<?php echo $accesorio['imagen'] ?> " alt="" class="img-fluid mw">
 						</figure>
                     </div>
                     
@@ -91,7 +91,7 @@
 						<div class="preview-post">
 							<a href=" <?=RUTA?>accesorio.php?id=<?php echo $ac['id_accesorio'] ?> ">
 								<figure>
-									<img src="<?php echo $ac['imagen'] ?> " class="img-fluid mw" style="max-width:50%;"  alt="">
+									<img src="<?php echo RUTA ?>bd/<?php echo $ac['imagen'] ?> " class="img-fluid mw" style="max-width:50%;"  alt="">
 								</figure>
 								<div class="content">
 									<h1 class="title morado">

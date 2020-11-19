@@ -3,14 +3,34 @@ include_once '../bd/conexion.php';
 $objeto = new Conexion();
 $conexion = $objeto->Conectar();
 
-// Recepción de los datos enviados mediante POST desde el JS   
+
+$valid_extensions = array('jpeg', 'jpg', 'png', 'gif'); // valid extensions
+$path = 'uploads/';
 
 $descripcion = (isset($_POST['descripcion'])) ? $_POST['descripcion'] : '';
 $precio = (isset($_POST['precio'])) ? $_POST['precio'] : '';
 $cantidad = (isset($_POST['cantidad'])) ? $_POST['cantidad'] : '';
-$imagen = (isset($_POST['imagen'])) ? $_POST['imagen'] : '';
 $id = (isset($_POST['id'])) ? $_POST['id'] : '';
-$opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
+$opcion = (isset($_POST['opciones'])) ? $_POST['opciones'] : '';
+
+if(isset($_FILES["file"]) && !empty($_FILES["file"]["name"]) && !empty($_FILES["file"]["name"])){
+    $img = $_FILES['file']['name'];
+    $tmp = $_FILES['file']['tmp_name'];
+    // get uploaded file's extension
+    $ext = strtolower(pathinfo($img, PATHINFO_EXTENSION));
+    // can upload same image using rand function
+    $final_image = rand(1000,1000000).$img;
+    // check's valid format
+    if(in_array($ext, $valid_extensions)) 
+    { 
+    $path = $path.strtolower($final_image); 
+    if(move_uploaded_file($tmp,$path)) 
+    {
+    $imagen = $path;
+    }
+    }
+    }else{
+        $imagen = 1;}
 
 switch($opcion){
     case 1: //alta
@@ -24,10 +44,15 @@ switch($opcion){
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
     case 2: //modificación
-        $consulta = "UPDATE accesorios SET descripcion='$descripcion', precio='$precio', cantidad='$cantidad', imagen='$imagen' WHERE id_accesorio='$id' ";		
-        $resultado = $conexion->prepare($consulta);
-        $resultado->execute();        
-        
+        if($imagen != 1){
+            $consulta = "UPDATE accesorios SET descripcion='$descripcion', precio='$precio', cantidad='$cantidad', imagen='$imagen' WHERE id_accesorio='$id' ";		
+            $resultado = $conexion->prepare($consulta);
+            $resultado->execute();
+        }else{
+            $consulta = "UPDATE accesorios SET descripcion='$descripcion', precio='$precio', cantidad='$cantidad' WHERE id_accesorio='$id' ";		
+            $resultado = $conexion->prepare($consulta);
+            $resultado->execute();
+        }
         $consulta = "SELECT id_accesorio, descripcion, precio, cantidad, imagen, estado FROM accesorios WHERE id_accesorio='$id' ";       
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
@@ -65,4 +90,3 @@ switch($opcion){
 
 print json_encode($data, JSON_UNESCAPED_UNICODE); //enviar el array final en formato json a JS
 $conexion = NULL;
-?>

@@ -49,7 +49,7 @@
 						<div class="preview-post">
 							<a href=" <?=RUTA?>vestido.php?id=<?php echo $vestido['id_vestido'] ?> ">
 								<figure>
-									<img src="<?php echo $vestido['imagen'] ?>" class="img-fluid mw" alt="">
+									<img src="<?php echo RUTA ?>bd/<?php echo $vestido['imagen'] ?> " class="img-fluid mw" alt="">
 								</figure>
 								<div class="content">
 									<h1 class="title morado">

@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
     	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<title>Vestidos - Malva Studio</title>
+		<title>Accesorios - Malva Studio</title>
 
 		<meta property="og:url"                content="..." />
 		<meta property="og:type"               content="website" />
@@ -49,7 +49,7 @@
 						<div class="preview-post">
 							<a href=" <?=RUTA?>accesorio.php?id=<?php echo $accesorio['id_accesorio'] ?> ">
 								<figure>
-									<img src="<?php echo $accesorio['imagen'] ?> " class="img-fluid mw" alt="">
+									<img src="<?php echo RUTA ?>bd/<?php echo $accesorio['imagen'] ?> " class="img-fluid mw" alt="">
 								</figure>
 								<div class="content">
 									<h1 class="title morado">

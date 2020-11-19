@@ -79,7 +79,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <td><?php echo $dat['codigo'] ?></td>
                                 <td><?php echo $dat['descripcion'] ?></td> 
                                 <td><?php echo $dat['precio'] ?></td>  
-                                <td><?php echo $dat['imagen'] ?></td> 
+                                <td><img src="<?php echo RUTA ?>bd/<?php echo $dat['imagen'] ?>" style="max-width:100px;"></td> 
                                 <td><?php 
                                 if($dat['estado'] == 1){
                                     echo "<button type='button' class='btn btn-success btn-desactivar'>Disponible</button>";
@@ -110,7 +110,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
             </div>
-        <form id="formVestidos">    
+        <form id="formVestidos" method='post' action='' enctype="multipart/form-data">    
             <div class="modal-body">
                 <div class="form-group">
                 <label for="codigo" class="col-form-label">Código del Vestido:</label>
@@ -132,10 +132,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                 <label for="cantidadL" class="col-form-label">Cantidad - Talla Grande:</label>
                 <input type="number" class="form-control" id="cantidadL">
                 </div>
-                <div class="form-group">
-                <label for="imagen" class="col-form-label">Imagen:</label>
-                <input type="text" class="form-control" id="imagen">
-                </div>                             
+                Imagen: <input type='file' name='file' id='file' class='form-control' ><br>                             
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
@@ -209,7 +206,7 @@ $(document).on("click", ".btn-desactivar", function(){
         url: "bd/crudvestidos.php",
         type: "POST",
         dataType: "json",
-        data: {id:id, opcion:opcion},
+        data: {id:id, opciones:opcion},
         success: function(data){  
             console.log(data);
             id_vestido = data[0].id_vestido;
@@ -224,7 +221,8 @@ $(document).on("click", ".btn-desactivar", function(){
             else {
                 estados = "<button type='button' class='btn btn-danger btn-activar'>No disponible</button>";
             }
-            tablaVestidos.row(fila).data([id_vestido,codigo,descripcion,precio,imagen,estados]).draw();}            
+            imagenes = "<img style='max-width:100px;' src='http://localhost/malva/bd/"+imagen+"'>";
+            tablaVestidos.row(fila).data([id_vestido,codigo,descripcion,precio,imagenes,estados]).draw();}            
                 
     });
 });
@@ -237,7 +235,7 @@ $(document).on("click", ".btn-activar", function(){
         url: "bd/crudvestidos.php",
         type: "POST",
         dataType: "json",
-        data: {id:id, opcion:opcion},
+        data: {id:id, opciones:opcion},
         success: function(data){  
             console.log(data);
             id_vestido = data[0].id_vestido;
@@ -252,7 +250,8 @@ $(document).on("click", ".btn-activar", function(){
             else {
                 estados = "<button type='button' class='btn btn-danger btn-activar'>No disponible</button>";
             }
-            tablaVestidos.row(fila).data([id_vestido,codigo,descripcion,precio,imagen,estados]).draw();}            
+            imagenes = "<img style='max-width:100px;' src='http://localhost/malva/bd/"+imagen+"'>";
+            tablaVestidos.row(fila).data([id_vestido,codigo,descripcion,precio,imagenes,estados]).draw();}            
                 
     });
 });
@@ -266,7 +265,6 @@ $(document).on("click", ".btnEditar", function(){
     codigo = fila.find('td:eq(1)').text();
     descripcion = fila.find('td:eq(2)').text();
     precio = parseInt(fila.find('td:eq(3)').text());
-    imagen = fila.find('td:eq(4)').text();
     cantidads = 1;
     cantidadm = 2;
     cantidadl= 2;
@@ -277,7 +275,6 @@ $(document).on("click", ".btnEditar", function(){
     $("#codigo").val(codigo);   
     $("#descripcion").val(descripcion);
     $("#precio").val(precio);
-    $("#imagen").val(imagen);
 
     opcion = 2; //editar
     
@@ -299,7 +296,7 @@ $(document).on("click", ".btnBorrar", function(){
             url: "bd/crudvestidos.php",
             type: "POST",
             dataType: "json",
-            data: {opcion:opcion, id:id},
+            data: {opciones:opcion, id:id},
             success: function(){
                 tablaVestidos.row(fila.parents('tr')).remove().draw();
             }
@@ -315,12 +312,25 @@ $("#formVestidos").submit(function(e){
     cantidadS = $.trim($("#cantidadS").val());
     cantidadM = $.trim($("#cantidadM").val());
     cantidadL = $.trim($("#cantidadL").val());
-    imagen = $.trim($("#imagen").val());    
+    
+    var fd = new FormData();
+    var files = $('#file')[0].files[0];
+    fd.append('file',files);
+    fd.append('id',id);
+    fd.append('codigo',codigo);
+    fd.append('descripcion',descripcion);
+    fd.append('precio',precio);
+    fd.append('cantidadS',cantidadS);
+    fd.append('cantidadM',cantidadM);
+    fd.append('cantidadL',cantidadL);
+    fd.append('opciones',opcion);
     $.ajax({
         url: "bd/crudvestidos.php",
         type: "POST",
         dataType: "json",
-        data: {codigo:codigo, descripcion:descripcion, precio:precio, cantidadS:cantidadS, cantidadM:cantidadM, cantidadL:cantidadL, imagen:imagen, id:id, opcion:opcion},
+        data: fd,
+        contentType: false,
+        processData: false,
         success: function(data){  
             console.log(data);
             id_vestido = data[0].id_vestido;
@@ -335,10 +345,11 @@ $("#formVestidos").submit(function(e){
             else {
                 estados = "<button type='button' class='btn btn-danger btn-activar'>No disponible</button>";
             }
+            imagenes = "<img style='max-width:100px;' src='http://localhost/malva/bd/"+imagen+"'>";
             if(opcion == 1){
-            tablaVestidos.row.add([id_vestido,codigo,descripcion,precio,imagen,estados]).draw();}
+            tablaVestidos.row.add([id_vestido,codigo,descripcion,precio,imagenes,estados]).draw();}
             else{
-                tablaVestidos.row(fila).data([id_vestido,codigo,descripcion,precio,imagen,estados]).draw();
+                tablaVestidos.row(fila).data([id_vestido,codigo,descripcion,precio,imagenes,estados]).draw();
             }            
         }        
     });

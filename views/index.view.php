@@ -220,7 +220,7 @@
 						<div class="preview-post">
 							<a href=" <?=RUTA?>vestido.php?id=<?php echo $vestido['id_vestido'] ?> ">
 								<figure><!--https://placehold.it/534x325 -->
-									<img src="<?php echo $vestido['imagen'] ?> " class="img-fluid mw" style="max-width:50%;" alt="">
+									<img src="<?php echo RUTA ?>bd/<?php echo $vestido['imagen'] ?> " class="img-fluid mw" style="max-width:50%;" alt="">
 								</figure>
 								<div class="content">
 									<h1 class="title morado">
@@ -284,7 +284,7 @@
 						<div class="preview-post2">
 							<a href=" <?=RUTA?>accesorio.php?id=<?php echo $accesorio['id_accesorio'] ?> ">
 								<figure><!--https://placehold.it/534x325 -->
-									<img src="<?php echo $accesorio['imagen'] ?> " class="img-fluid mw" style="max-width:50%;" alt="">
+									<img src="<?php echo RUTA ?>bd/<?php echo $accesorio['imagen'] ?> " class="img-fluid mw" style="max-width:50%;" alt="">
 								</figure>
 								<div class="content">
 									<h1 class="title morado">
