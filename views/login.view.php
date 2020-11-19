@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 	<head>
@@ -10,6 +11,8 @@
 		<meta property="og:title"              content="..." />
 		<meta property="og:description"        content="..." />
 		<meta property="og:image"              content="..." />
+		
+
 		<?php echo $favicon; ?>
 		<?php echo $normalize_css; ?>
 		<?php echo $boostrap_v4_css ?>
@@ -21,11 +24,11 @@
 		
 		<?php echo $google_analitycs; ?>
 		<?php echo $jquery_js;  ?>
-		<?php echo $registrousuario;  ?>
+		
 	</head>
 	<body>
 
-        <?php require("views/navbar.view.php"); ?>  
+        <!-- <?php //require("views/navbar.view.php"); ?>   -->
         <div class="container-fluid">
 		<div class="container">
 			<h2 class="text-center" id="title">Registro/Inicio de Sesión</h2>
@@ -147,7 +150,7 @@
 		<?php echo $jquery_js; ?>
 		<?php echo $tether_js; ?>
 
-
+		<?php echo $iniciarsesion_js;  ?>
 		<!-- Javascripts own files  -->		
 		<?php echo $own_file_js; ?>
 

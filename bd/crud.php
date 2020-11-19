@@ -1,3 +1,6 @@
+
+
+
 <?php
 include_once '../bd/conexion.php';
 $objeto = new Conexion();
@@ -14,11 +17,11 @@ $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
 
 switch($opcion){
     case 1: //alta
-        $consulta = "INSERT INTO accesorios (id_accesorio, descripcion, precio, cantidad, imagen, estado) VALUES('$id', '$descripcion', '$precio', '$cantidad', '$imagen', 1) ";			
+        $consulta = "INSERT INTO accesorios (descripcion, precio, cantidad, imagen, estado) VALUES('$descripcion', '$precio', '$cantidad', '$imagen', '1') ";			
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(); 
 
-        $consulta = "SELECT id_accesorio, descripcion, precio, cantidad, imagen, estado FROM accesorios WHERE id_accesorio='$id' ";
+        $consulta = "SELECT id_accesorio, descripcion, precio, cantidad, imagen, estado FROM accesorios ORDER BY id_accesorio DESC";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
@@ -38,31 +41,8 @@ switch($opcion){
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);                           
-        break;
-    case 4: //desactivar
-        $consulta = "UPDATE accesorios SET estado=0 WHERE id_accesorio='$id' ";		
-        $resultado = $conexion->prepare($consulta);
-        $resultado->execute();        
-            
-        $consulta = "SELECT id_accesorio, descripcion, precio, cantidad, imagen, estado FROM accesorios WHERE id_accesorio='$id' ";       
-        $resultado = $conexion->prepare($consulta);
-        $resultado->execute();
-        $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
-        break;
-
-    case 5: //activar
-        $consulta = "UPDATE accesorios SET estado='1' WHERE id_accesorio='$id' ";		
-        $resultado = $conexion->prepare($consulta);
-        $resultado->execute();        
-                
-        $consulta = "SELECT id_accesorio, descripcion, precio, cantidad, imagen, estado FROM accesorios WHERE id_accesorio='$id' ";       
-        $resultado = $conexion->prepare($consulta);
-        $resultado->execute();
-        $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
-        break;
-    
+        break;        
 }
 
 print json_encode($data, JSON_UNESCAPED_UNICODE); //enviar el array final en formato json a JS
 $conexion = NULL;
-?>

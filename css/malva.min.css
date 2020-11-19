@@ -548,6 +548,35 @@ section.caso {
 .show > .btn-secondary.dropdown-toggle {
   color: #aa0095; }
 
+.video-header {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #fff; }
+
+.wrap {
+  max-width: 960px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin: auto;
+  text-align: center; }
+
+.fullscreen-video-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden; }
+
+.fullscreen-video-wrap video {
+  min-height: 100%;
+  min-width: 100%; }
+
 @media (max-width: 767px) {
   #titulo {
     margin-top: 30% !important; }
@@ -699,4 +728,5 @@ section.caso {
 @media screen and (min-width: 1024px) {
   body, html {
     font-size: 10px; } }
+
 /*# sourceMappingURL=malva.min.css.map */

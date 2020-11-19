@@ -1,3 +1,10 @@
+<?php 
+if(session_status() !== 2) 
+{
+	session_start();
+}	
+
+ ?>
 <header class="header">
 	<div class="pos-f-t">
 		
@@ -25,11 +32,20 @@
 							<img  src="<?=RUTA?>sprites/user.svg" alt="" class="regular-logo" >
 							<img  src="<?=RUTA?>sprites/down.svg" alt="" class="regular-logo" style="max-height: 20px; margin: 10% 0 0 -80%;">
 							</a>
+							<a>Hola
+							 <?php 
+							 if( isset($_SESSION['user'][0])){
+								echo $_SESSION['user'][0]; 
+							}else{
+							echo ", Bienvenido(a)";
+							}
+							?></a>
 
 							<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-								<a class="dropdown-item" href="#">Iniciar Sesión/ Registrarse</a>
+								<a class="dropdown-item" id="IRsesion" href="login.php" style="display: inline-block;">Iniciar Sesión/ Registrarse</a>
 								<a class="dropdown-item" href="#">Pedidos</a>
-								<a class="dropdown-item" href="#">Cerrar Sesión</a>
+					<a class="dropdown-item"  id="Csesion"  href="cerrarsesision.php" style="display: inline-block;">Cerrar Sesión</a>
+
 							</div>
 						</div>
 
