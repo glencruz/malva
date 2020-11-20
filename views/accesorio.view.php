@@ -1,3 +1,6 @@
+<?php  
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
 	<head>
@@ -45,7 +48,28 @@
 										$ <?php echo $accesorio['precio'] ?> MXN		
 										</div>
 										<div class="">
-											<a href="#" class="button">Agregar a carrito</a>
+											<?php 
+												 if( isset($_SESSION['user'][0])){
+
+												 	?>
+
+
+													<a  href=" <?=RUTA?>carrito.php?id=<?php echo $accesorio['id_accesorio'] ?>&descripcion=<?php echo $accesorio['descripcion'] ?>&precio=<?php echo $accesorio['precio'] ?>&imagen=<?php echo $accesorio['imagen'] ?> "class="button">Agregar a carrito</a> 
+
+
+
+													<?php
+												}else{
+
+													?>
+												 <a  href="#"class="button">Agregar a carrito</a> 
+
+												 	<?php
+
+												}
+
+
+											?>
 										</div>
 									</div>
 								</div>		

@@ -21,7 +21,7 @@ if(session_status() !== 2)
 					</div>
 					
 					<div class="user-icon d-none d-md-block " >
-						<a href="<?php echo RUTA ?>" class="mb-0">
+						<a href=" <?=RUTA?>carrito.php?val=1" class="mb-0">
 							<img  src="<?=RUTA?>sprites/carrito.svg" alt="" class="regular-logo" >
 								
 						</a>

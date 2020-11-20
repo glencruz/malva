@@ -1,12 +1,9 @@
-<?php  
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="es">
 	<head>
 		<meta charset="UTF-8">
     	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<title>Vestido - Malva Studio</title>
+		<title>Vestidos - Malva Studio</title>
 
 		<meta property="og:url"                content="..." />
 		<meta property="og:type"               content="website" />
@@ -14,10 +11,9 @@ session_start();
 		<meta property="og:description"        content="..." />
 		<meta property="og:image"              content="..." />
 		<?php echo $favicon; ?>
-
 		<?php echo $normalize_css; ?>
 		<?php echo $boostrap_v4_css ?>
-		<?php echo $iniciarsesion_js;  ?>
+
 		<!-- Font awesome -->
 		<?php echo $font_awesome_css; ?>
 		<!-- CSS own files -->
@@ -29,64 +25,113 @@ session_start();
 
         <?php require("views/navbar.view.php"); ?>
         
-		<?php foreach ($vestidos as $vestido): ?>
+		
+
+
+			
+
         <section class="caso" >
         	<form action="vestidos.php"  metod="POST" >
+
         <div class="container-fluid">
 				<div class="row">
+
 					<div class="col-md-4 offset-md-1">
 						<div class="row">
 							<div class="col-md-12">
 								<div class="row">
+									 <section class="blog">
+				<div class="row">
+					<div class="col-md-11 offset-md-1">
+						<div class="row">
+							<div class="puntos"> </div>
+							<div class="ml-4">	
+                                <h2 class="title morado">
+                                    Sus productos son:
+                                </h2>						
+							</div>
+						</div>
+					</div>
 									<div class="ml-4">
-										<h1 class="title morado v2" >
-										<?php echo $vestido['codigo'] ?>
-										</h1>
 										
-										<div class="paragraph black">
-										<?php echo $vestido['descripcion'] ?>
-										<br>
-										$ <?php echo $vestido['precio'] ?> MXN		
-										</div>
-										<!-- <div class="paragraph black">
-											<input type="number" name="cantidad" id="cantidad" value=""></input>
-									 	</div> -->
-									 	
-										<div class="">
+							<?php
+							$total=0;
+							if(isset($_SESSION["carrito"])){
+								foreach ($_SESSION["carrito"] as $indice => $arreglo) {
+									$total+=$arreglo["precio"]*1;
 
-											<?php 
-												 if( isset($_SESSION['user'][0])){
+									foreach ($arreglo as $key => $value) {
+										if($key=="imagen"){
+							?> 
+									<div class="col-md-6">
+										<figure>
+											<img src="<?php echo RUTA ?>bd/<?php echo $value ?> " alt="" class="img-fluid mw">
+										</figure>
+				                    </div>
+							<?php		
+									}else{
 
-												 	?>
+							?>
 
-
-													<a  href=" <?=RUTA?>carrito.php?id=<?php echo $vestido['id_vestido'] ?>&descripcion=<?php echo $vestido['descripcion'] ?>&precio=<?php echo $vestido['precio'] ?>&imagen=<?php echo $vestido['imagen'] ?> "class="button">Agregar a carrito</a> 
-
-													<?php
-												}else{
-
-													?>
-												 <a  href="#"class="button">Agregar a carrito</a> 
-												 	<?php
-												}
-
-											?>
-
-										</div>
+									<div class="paragraph black">
+									<?php echo $key.": ".$value?>		
+									</div>
 
 
+
+										<?php	
+										}
+										# code...
+									}
+									# code...
+									?>
+								<div class="row">
+									<div class="col-md-12">
 										
+
+									 	<div class="col-md-6">
+									 		
+											<a  href="carrito.php?item=<?php echo $indice ?>" class="button">ELIMINAR</a>
+										
+									 	</div>
+								 	</div>
+								 </div>
+							<?php
+								}
+
+							?>
+								<h1><?php echo $total; ?></h1>
+								<a  href="carrito.php?vaciar=true&val=1"class="button">PAGAR CARRITO</a>
+								
+							<?php
+
+							}
+							else{
+								echo "<script> alert('El carrito se encuentra vacio')</script>"
+							?>
+								<a href="vestidos.php">Regresar	<a>
+
+						<?php
+							}
+
+						?>
+
+						
+
 									</div>
 								</div>		
                             </div>
                           
 						</div>						
 					</div>
-					<div class="col-md-6">
-						<figure>
-							<img src="<?php echo RUTA ?>bd/<?php echo $vestido['imagen'] ?> " alt="" class="img-fluid mw">
-						</figure>
-                    </div>
+
+					</div>
+					<!-- <div class="col-md-6"> -->
+
+						
+
+
+					<!-- </div> -->
                     
                 </div>
             </form>
@@ -113,7 +158,6 @@ session_start();
 					</div>
 				</div>
 
-				
 				<div class="row carousel-blog">
 					<div class="slider" id="slider-posts" posts="<?php echo count($vestidos2) ?>">
 					<?php foreach ($vestidos2 as $ves): ?>
@@ -157,7 +201,6 @@ session_start();
 			
             </div>
         </section>
-        <?php endforeach ?>
         <?php require("views/footer.view.php"); ?>	
 		
 		<!-- jQuery first, then Tether, then Bootstrap JS. -->

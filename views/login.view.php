@@ -16,7 +16,7 @@
 		<?php echo $favicon; ?>
 		<?php echo $normalize_css; ?>
 		<?php echo $boostrap_v4_css ?>
-
+<?php echo $iniciarsesion_js;  ?>
 		<!-- Font awesome -->
 		<?php echo $font_awesome_css; ?>
 		<!-- CSS own files -->
@@ -24,6 +24,7 @@
 		
 		<?php echo $google_analitycs; ?>
 		<?php echo $jquery_js;  ?>
+		
 		
 	</head>
 	<body>
@@ -150,7 +151,7 @@
 		<?php echo $jquery_js; ?>
 		<?php echo $tether_js; ?>
 
-		<?php echo $iniciarsesion_js;  ?>
+		
 		<!-- Javascripts own files  -->		
 		<?php echo $own_file_js; ?>
 

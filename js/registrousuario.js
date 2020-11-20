@@ -150,7 +150,7 @@ function iniciosesion(){
              alert("no entro");
           
              }
-            });
+        });
                 
               }else{
               
@@ -169,6 +169,10 @@ function iniciosesion(){
       }
 
 }
+
+
+
+
 
 
 
