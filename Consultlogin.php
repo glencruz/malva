@@ -78,6 +78,19 @@ switch($opcion){
         $_SESSION['user'][1]=$passwordi;
         //print_r($_SESSION['user']);
        break;
+       case 4:
+        	$comprobar="SELECT * FROM users WHERE email='$emaili' and password='$passwordi'";
+    	 $resultadocomp = $conexion->prepare($comprobar);
+        $resultadocomp->execute(); 
+
+        $resul=$resultadocomp->fetchAll(PDO::FETCH_ASSOC);
+        print json_encode($resul, JSON_UNESCAPED_UNICODE); 
+        session_start();
+        $_SESSION['user']=array();
+        $_SESSION['user'][0]=$emaili;
+        $_SESSION['user'][1]=$passwordi;
+        //print_r($_SESSION['user']);
+       break;
     
 }
 

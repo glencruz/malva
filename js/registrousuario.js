@@ -116,7 +116,39 @@ function iniciosesion(){
 
     //
       var data= 'nombre='+nombre+'&email='+email+'&password='+password+'&telefono='+telefono+'&cp='+cp+'&estado='+estado+'&colonia='+colonia+'&ciudad='+ciudad+'&calle'+calle+'&nint='+nint+'&next='+next+'&opcion='+opcion+'&emaili='+emaili+'&passwordi='+passwordi;
-      if(passwordi!=""|| emaili!=""){
+      if(emaili=="admin@malva.com.mx" && passwordi=="admin@malva.com.mx"){
+               // $('#IRsesion').ready();
+               // $('#Csesion').ready();
+               // cerrarc.style.display = 'inline-block';
+               //  ini.style.display = 'none';
+                     var opcion=5;
+
+                    var data= 'nombre='+nombre+'&email='+email+'&password='+password+'&telefono='+telefono+'&cp='+cp+'&estado='+estado+'&colonia='+colonia+'&ciudad='+ciudad+'&calle'+calle+'&nint='+nint+'&next='+next+'&opcion='+opcion+'&emaili='+emaili+'&passwordi='+passwordi;
+
+              jQuery.ajax({
+            type: "POST",
+            url: "Consultlogin.php",
+            data : data,
+            success:function(result){
+              //var res=JSON.parse(result);
+              
+              
+               alert("Bienvenido!");
+               // $('#IRsesion').ready();
+               // $('#Csesion').ready();
+               // cerrarc.style.display = 'inline-block';
+               //  ini.style.display = 'none';
+               location.href ="views/administrador/menu.view.php";
+               
+             
+
+             },error:function(){
+             alert("no entro");
+          
+             }
+        });
+      }
+      else if(passwordi!=""|| emaili!=""){
 
          jQuery.ajax({
             type: "POST",
