@@ -177,7 +177,7 @@ header.header.scroll {
     color: #fff; }
 
 .user-icon {
-  margin: 0 0 0 50%;
+  margin: 0 0 0 40%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex; }
@@ -599,6 +599,9 @@ section.caso {
 .fullscreen-video-wrap video {
   min-height: 100%;
   min-width: 100%; }
+
+section.ticket {
+  margin: 10%; }
 
 @media (max-width: 767px) {
   #titulo {
