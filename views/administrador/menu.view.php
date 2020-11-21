@@ -5,7 +5,7 @@
       <div class="container-fluid">
         <div class="row justify-content-between">
           <div class="logo offset-md-1 pl-4">
-            <a href="<?php echo RUTA ?>" class="mb-0">
+            <a href="<?php echo RUTA ?>admin.vestidos.php" class="mb-0">
               <!--<img  src="<?=RUTA?>sprites/logo_malva.svg" alt="" class="regular-logo">-->
               <h1 class="title morado v2 ">Malva Studio</h1>  
             </a>
