@@ -600,6 +600,9 @@ section.caso {
   min-height: 100%;
   min-width: 100%; }
 
+section.ticket {
+  margin: 10%; }
+
 @media (max-width: 767px) {
   #titulo {
     margin-top: 30% !important; }

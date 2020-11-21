@@ -250,7 +250,6 @@ if( $('.lottie-animation').length > 0 ){
 
 
 
-
 function animate( ){
 	
 	let path = rootUrl+'anim/'+$(this).attr('data-animation-name')+'.json';

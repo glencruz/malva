@@ -26,15 +26,12 @@ $passwordi = (isset($_POST['passwordi'])) ? $_POST['passwordi'] : '';
 switch($opcion){
     case 1: //alta
     		//comprobar si existe
-    	$comprobar="SELECT count(*) as contador FROM cliente WHERE email='$email'";
+    	$comprobar="SELECT count(*) as contador FROM clientes WHERE email='$email'";
     	 $resultadocomp = $conexion->prepare($comprobar);
         $resultadocomp->execute(); 
         $resul=$resultadocomp->fetchAll(PDO::FETCH_ASSOC);
         print json_encode($resul, JSON_UNESCAPED_UNICODE); //enviar el array final en formato json a JS
-			
-   
-
-       
+		
                 
         break;
         case 2:
@@ -42,23 +39,24 @@ switch($opcion){
 		$resultado = $conexion->prepare($consulta2);
         $resultado->execute();
      
-		$consulta ="INSERT INTO cliente(nombre, apellido, id_direccion, email, password, telefono) VALUES ('$nombre','$apellido',(SELECT MAX(id_direccion) AS id FROM direcciones),'$email','$password','$telefono')";
+		$consulta ="INSERT INTO clientes(nombre, apellido, id_direccion, email, password, telefono) VALUES ('$nombre','$apellido',(SELECT MAX(id_direccion) AS id FROM direcciones),'$email','$password','$telefono')";
         			
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(); 
 
 
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
-            session_start();
-        $_SESSION['user']=array();
+            
+      
+        print json_encode($data, JSON_UNESCAPED_UNICODE); //enviar el array final en formato json a JS
+        session_start();
+   			  $_SESSION['user']=array();
         $_SESSION['user'][0]=$email;
         $_SESSION['user'][1]=$password;
-        print json_encode($data, JSON_UNESCAPED_UNICODE); //enviar el array final en formato json a JS
-   			
 
         break;
         case 3:
-        $comprobar="SELECT count(*) as contador FROM cliente WHERE email='$emaili' and password='$passwordi'";
+        $comprobar="SELECT count(*) as contador FROM clientes WHERE email='$emaili' and password='$passwordi'";
     	 $resultadocomp = $conexion->prepare($comprobar);
         $resultadocomp->execute(); 
         $resul=$resultadocomp->fetchAll(PDO::FETCH_ASSOC);
@@ -68,7 +66,7 @@ switch($opcion){
 
         break;
         case 4:
-        	$comprobar="SELECT * FROM cliente WHERE email='$emaili' and password='$passwordi'";
+        	$comprobar="SELECT * FROM clientes WHERE email='$emaili' and password='$passwordi'";
     	 $resultadocomp = $conexion->prepare($comprobar);
         $resultadocomp->execute(); 
 

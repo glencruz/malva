@@ -92,7 +92,7 @@
 
 		<!-- Javascripts own files  -->		
 		<?php echo $own_file_js; ?>
-
+		<?php echo $popper_js; ?>
 
 		<?php echo $bootstrap_v4_js; ?>
 
