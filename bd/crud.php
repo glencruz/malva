@@ -1,6 +1,3 @@
-
-
-
 <?php
 include_once '../bd/conexion.php';
 $objeto = new Conexion();
@@ -37,11 +34,11 @@ if(isset($_FILES["file"]) && !empty($_FILES["file"]["name"]) && !empty($_FILES["
 
 switch($opcion){
     case 1: //alta
-        $consulta = "INSERT INTO accesorios (descripcion, precio, cantidad, imagen, estado) VALUES('$descripcion', '$precio', '$cantidad', '$imagen', '1') ";			
+        $consulta = "INSERT INTO accesorios (id_accesorio, descripcion, precio, cantidad, imagen, estado) VALUES('$id', '$descripcion', '$precio', '$cantidad', '$imagen', '1') ";			
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(); 
 
-        $consulta = "SELECT id_accesorio, descripcion, precio, cantidad, imagen, estado FROM accesorios ORDER BY id_accesorio DESC";
+        $consulta = "SELECT id_accesorio, descripcion, precio, cantidad, imagen, estado FROM accesorios WHERE id_accesorio='$id' ";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
