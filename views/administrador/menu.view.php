@@ -24,9 +24,9 @@
 <div class="collapse d-block" id="navbarToggleExternalContent">
   <div class="row justify-content-end links title v2 white text-right flex-column">
   
-      <a href="#">Vestidos</a>
-      <a href="#">Accesorios</a>
-      <a href="#">Pedidos</a>
+      <a href="<?php echo RUTA ?>admin.vestidos.php">Vestidos</a>
+      <a href="<?php echo RUTA ?>admin.accesorios.php">Accesorios</a>
+      <a href="<?php echo RUTA ?>admin.pedidos.php">Pedidos</a>
      
   </div>
 </div>
