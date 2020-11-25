@@ -22,7 +22,7 @@ function sendContactMail($data){
 	
 	$mail->Host = 'smtp.gmail.com';             // Especificar el servidor de correo a utilizar 
 	$mail->Username = 'glencruzcanul@gmail.com';          // Correo electronico saliente ejemplo: tucorreo@gmail.com
-	$mail->Password = 'Ladygaga17'; 		// Tu contraseña de gmail
+	$mail->Password = 'Yoco2020'; 		// Tu contraseña de gmail
 	$mail->SMTPSecure = 'tls';                  // Habilitar encriptacion, `ssl` es aceptada
 	$mail->Port = 587; 
 
