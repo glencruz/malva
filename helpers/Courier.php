@@ -3,31 +3,38 @@
 require_once('phpMailer/class.phpmailer.php');
 require_once('phpMailer/class.smtp.php');
 
+
 function sendContactMail($data){
 	// texto arriba 15px abajo 10px
 	
-	$url_site = (isset($_SERVER['HTTPS']) ? 'https' : 'http') . '://'.$_SERVER["HTTP_HOST"];
-	$path = $_SERVER['SERVER_NAME'];
+/*	$url_site = (isset($_SERVER['HTTPS']) ? 'https' : 'http') . '://'.$_SERVER["HTTP_HOST"];
+	$path = $_SERVER['SERVER_NAME'];*/
 	$mail = new PHPMailer();
+	$mail->isSMTP();
+
 	$mail->CharSet = 'UTF-8';
 	$mail->Encoding = "base64";
 	
-	$mail->From = "malva@gmail.com";
-	$mail->FromName = "Malva Studio";
+	
 	$mail->isHTML(true);
+	$mail->SMTPAuth = true;  	                   // Habilitar la autenticacion con SMTP
 
-	//temporal
-	/*$mail->isSMTP();
-    $mail->Host = 'smtp.mailtrap.io';  //mailtrap SMTP server
-    $mail->SMTPAuth = true;
-    $mail->Username = '8270bb35ef0296';   //username
-    $mail->Password = '160ce573aef9ed';   //password
-    $mail->Port = 2525;                 //smtp port
-	//temporal */
+	
+	$mail->Host = 'smtp.gmail.com';             // Especificar el servidor de correo a utilizar 
+	$mail->Username = 'glencruzcanul@gmail.com';          // Correo electronico saliente ejemplo: tucorreo@gmail.com
+	$mail->Password = 'Ladygaga17'; 		// Tu contraseña de gmail
+	$mail->SMTPSecure = 'tls';                  // Habilitar encriptacion, `ssl` es aceptada
+	$mail->Port = 587; 
+
+
+
+	$mail->From = "malva@gmail.com";
+	$mail->FromName = "Malva Studio";                 
+
 
 
 	$mail->addAddress($data['email'], $data['name']);
-	$mail->addBCC("malva@gmail.com");
+	$mail->addBCC("glencruzcanul@gmail.com");
 	
 	$mail->Subject = "Contacto - Malva";
 	$headers =  'From: '."malva@gmail.com"."\r\n" .
@@ -48,8 +55,8 @@ function sendContactMail($data){
 													<tr>
 														<td class='headerContent'>
 															<div style='width:100%; margin: 0 auto; padding-top:20px; text-align:center;'>
-																<a href='https://yoco.ws/laminex'>
-																	<img src='https://yoco.ws/laminex/img/header-mail.png' alt='...'>
+																<a href=''>
+																	<img src='https://i.pinimg.com/originals/fe/44/12/fe441235d728b50c6003b3e59cd807cb.gif' alt='...'>
 																</a>
 													
 															</div>
@@ -94,7 +101,9 @@ function sendContactMail($data){
 				</body>
 			</html>";
 	$mail->Body = $message;
+
 	$mail->AltBody = $headers."\n\n".$message;
+	
 	if(!$mail->Send()) {
 		error_log($mail->ErrorInfo);
 		return false;

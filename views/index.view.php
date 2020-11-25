@@ -342,15 +342,17 @@
 							</div>	
 
 							<div class="col-md-6">
-								<form action="<?=RUTA?>helpers/Contact.helper.php" class="form-contact hide-on-submit" id="contact-form">
+								<form action="<?=RUTA?>helpers/Contact.helper.php" class="form-contact hide-on-submit" id="contact-form" enctype="multipart/form-data">
 									<input type="text" id="nombre" name="name" value="" placeholder="Nombre">
 									<input type="email" id="email" name="email" value="" placeholder="E-mail">
 									<input type="text" id="asunto" name="subject" value="" placeholder="Asunto">
 									<textarea type="textarea" rows="5" name="message" id="mensaje" value="" placeholder="Mensaje"></textarea>
+									
 									<div class="alert alert-danger text-danger circular-book paragraph " style="display: none"></div>
 									<div class="g-recaptcha" data-sitekey="6LevwNsZAAAAABRH1lu2sbLz0FrcCSosSAp30lPJ" style="transform:scale(0.8);-webkit-transform:scale(0.9); margin-left:-5%;" data-aos-once="true" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1000" data-aos-offset="200"></div>
 									<button type="submit" value="Enviar" class="button">Enviar</button>
 								</form>
+								
 								<div class="show-on-submit " style="display: none;">
 									<div class="paragraph v2 book cian-midle" >
 										Tu mensaje fue enviado, nos pondremos en contacto pronto.
