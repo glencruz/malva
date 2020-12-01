@@ -65,6 +65,9 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <th>Código</th>
                                 <th>Descripción</th>
                                 <th>Precio</th>
+                                <th>Talla Chica</th>
+                                <th>Talla Mediana</th>
+                                <th>Talla Grande</th>
                                 <th>Imagen</th>
                                 <th>Estado</th>
                                 <th>Acciones</th>
@@ -78,7 +81,40 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <td><?php echo $dat['id_vestido'] ?></td>
                                 <td><?php echo $dat['codigo'] ?></td>
                                 <td><?php echo $dat['descripcion'] ?></td> 
-                                <td><?php echo $dat['precio'] ?></td>  
+                                <td><?php echo $dat['precio'] ?></td>
+                                <td><?php
+                                $vestido = $dat['id_vestido'];
+                                $consulta = "SELECT cantidad FROM rel_tallas WHERE id_vestido=$vestido AND id_talla=1";
+                                $resultado = $conexion->prepare($consulta);
+                                $resultado->execute();
+                                $datos=$resultado->fetchAll(PDO::FETCH_ASSOC);
+                                foreach($datos as $dato) {
+                                    echo $dato['cantidad'];
+                                }
+                                ?>
+                                </td>
+                                <td><?php
+                                $vestido = $dat['id_vestido'];
+                                $consulta = "SELECT cantidad FROM rel_tallas WHERE id_vestido=$vestido AND id_talla=2";
+                                $resultado = $conexion->prepare($consulta);
+                                $resultado->execute();
+                                $datos=$resultado->fetchAll(PDO::FETCH_ASSOC);
+                                foreach($datos as $dato) {
+                                    echo $dato['cantidad'];
+                                }
+                                ?>
+                                </td>
+                                <td><?php
+                                $vestido = $dat['id_vestido'];
+                                $consulta = "SELECT cantidad FROM rel_tallas WHERE id_vestido=$vestido AND id_talla=3";
+                                $resultado = $conexion->prepare($consulta);
+                                $resultado->execute();
+                                $datos=$resultado->fetchAll(PDO::FETCH_ASSOC);
+                                foreach($datos as $dato) {
+                                    echo $dato['cantidad'];
+                                }
+                                ?>
+                                </td>  
                                 <td><img src="<?php echo RUTA ?>bd/<?php echo $dat['imagen'] ?>" style="max-width:100px;"></td> 
                                 <td><?php 
                                 if($dat['estado'] == 1){
@@ -209,12 +245,15 @@ $(document).on("click", ".btn-desactivar", function(){
         data: {id:id, opciones:opcion},
         success: function(data){  
             console.log(data);
-            id_vestido = data[0].id_vestido;
-            codigo = data[0].codigo;            
-            descripcion = data[0].descripcion;
-            precio = data[0].precio;
-            imagen = data[0].imagen;
-            estado = data[0].estado;
+            id_vestido = data.normal[0].id_vestido;
+            codigo = data.normal[0].codigo;            
+            descripcion = data.normal[0].descripcion;
+            precio = data.normal[0].precio;
+            imagen = data.normal[0].imagen;
+            estado = data.normal[0].estado;
+            chica = data.chica[0].cantidad;
+            mediana = data.mediana[0].cantidad;
+            grande = data.grande[0].cantidad;
             if(estado == 1){
                 estados = "<button type='button' class='btn btn-success btn-desactivar'>Disponible</button>";
             }
@@ -222,7 +261,7 @@ $(document).on("click", ".btn-desactivar", function(){
                 estados = "<button type='button' class='btn btn-danger btn-activar'>No disponible</button>";
             }
             imagenes = "<img style='max-width:100px;' src='http://localhost/malva/bd/"+imagen+"'>";
-            tablaVestidos.row(fila).data([id_vestido,codigo,descripcion,precio,imagenes,estados]).draw();}            
+            tablaVestidos.row(fila).data([id_vestido,codigo,descripcion,precio,chica,mediana,grande,imagenes,estados]).draw();}            
                 
     });
 });
@@ -238,12 +277,15 @@ $(document).on("click", ".btn-activar", function(){
         data: {id:id, opciones:opcion},
         success: function(data){  
             console.log(data);
-            id_vestido = data[0].id_vestido;
-            codigo = data[0].codigo;            
-            descripcion = data[0].descripcion;
-            precio = data[0].precio;
-            imagen = data[0].imagen;
-            estado = data[0].estado;
+            id_vestido = data.normal[0].id_vestido;
+            codigo = data.normal[0].codigo;            
+            descripcion = data.normal[0].descripcion;
+            precio = data.normal[0].precio;
+            imagen = data.normal[0].imagen;
+            estado = data.normal[0].estado;
+            chica = data.chica[0].cantidad;
+            mediana = data.mediana[0].cantidad;
+            grande = data.grande[0].cantidad;
             if(estado == 1){
                 estados = "<button type='button' class='btn btn-success btn-desactivar'>Disponible</button>";
             }
@@ -251,7 +293,7 @@ $(document).on("click", ".btn-activar", function(){
                 estados = "<button type='button' class='btn btn-danger btn-activar'>No disponible</button>";
             }
             imagenes = "<img style='max-width:100px;' src='http://localhost/malva/bd/"+imagen+"'>";
-            tablaVestidos.row(fila).data([id_vestido,codigo,descripcion,precio,imagenes,estados]).draw();}            
+            tablaVestidos.row(fila).data([id_vestido,codigo,descripcion,precio,chica,mediana,grande,imagenes,estados]).draw();}            
                 
     });
 });
@@ -265,9 +307,9 @@ $(document).on("click", ".btnEditar", function(){
     codigo = fila.find('td:eq(1)').text();
     descripcion = fila.find('td:eq(2)').text();
     precio = parseInt(fila.find('td:eq(3)').text());
-    cantidads = 1;
-    cantidadm = 2;
-    cantidadl= 2;
+    cantidads = parseInt(fila.find('td:eq(4)').text());
+    cantidadm = parseInt(fila.find('td:eq(5)').text());
+    cantidadl= parseInt(fila.find('td:eq(6)').text());
 
     $("#cantidadS").val(cantidads);   
     $("#cantidadM").val(cantidadm);
@@ -333,12 +375,15 @@ $("#formVestidos").submit(function(e){
         processData: false,
         success: function(data){  
             console.log(data);
-            id_vestido = data[0].id_vestido;
-            codigo = data[0].codigo;            
-            descripcion = data[0].descripcion;
-            precio = data[0].precio;
-            imagen = data[0].imagen;
-            estado = data[0].estado;
+            id_vestido = data.normal[0].id_vestido;
+            codigo = data.normal[0].codigo;            
+            descripcion = data.normal[0].descripcion;
+            precio = data.normal[0].precio;
+            imagen = data.normal[0].imagen;
+            estado = data.normal[0].estado;
+            chica = data.chica[0].cantidad;
+            mediana = data.mediana[0].cantidad;
+            grande = data.grande[0].cantidad;
             if(estado == 1){
                 estados = "<button type='button' class='btn btn-success btn-desactivar'>Disponible</button>";
             }
@@ -347,9 +392,9 @@ $("#formVestidos").submit(function(e){
             }
             imagenes = "<img style='max-width:100px;' src='http://localhost/malva/bd/"+imagen+"'>";
             if(opcion == 1){
-            tablaVestidos.row.add([id_vestido,codigo,descripcion,precio,imagenes,estados]).draw();}
+            tablaVestidos.row.add([id_vestido,codigo,descripcion,precio,chica,mediana,grande,imagenes,estados]).draw();}
             else{
-                tablaVestidos.row(fila).data([id_vestido,codigo,descripcion,precio,imagenes,estados]).draw();
+                tablaVestidos.row(fila).data([id_vestido,codigo,descripcion,precio,chica,mediana,grande,imagenes,estados]).draw();
             }            
         }        
     });

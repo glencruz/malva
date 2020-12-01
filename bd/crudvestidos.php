@@ -56,7 +56,22 @@ switch($opcion){
         $consulta = "SELECT id_vestido, codigo, descripcion, precio, imagen, estado FROM vestidos ORDER BY id_vestido DESC LIMIT 1";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
-        $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
+        $data['normal']=$resultado->fetchAll(PDO::FETCH_ASSOC);
+
+        $consulta = "SELECT cantidad FROM rel_tallas WHERE id_talla = 1 ORDER BY id_rel DESC LIMIT 1";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();
+        $data['chica']=$resultado->fetchAll(PDO::FETCH_ASSOC);
+
+        $consulta = "SELECT cantidad FROM rel_tallas WHERE id_talla = 2 ORDER BY id_rel DESC LIMIT 1";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();
+        $data['mediana']=$resultado->fetchAll(PDO::FETCH_ASSOC);
+
+        $consulta = "SELECT cantidad FROM rel_tallas WHERE id_talla = 3 ORDER BY id_rel DESC LIMIT 1";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();
+        $data['grande']=$resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
     case 2: //modificación
         if($imagen != 1){
@@ -68,16 +83,40 @@ switch($opcion){
             $resultado = $conexion->prepare($consulta);
             $resultado->execute();
         }
+        $consulta = "UPDATE rel_tallas SET cantidad='$cantidadS' WHERE id_vestido='$id' AND id_talla = 1";		
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();
+        $consulta = "UPDATE rel_tallas SET cantidad='$cantidadM' WHERE id_vestido='$id' AND id_talla = 2";		
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();
+        $consulta = "UPDATE rel_tallas SET cantidad='$cantidadL' WHERE id_vestido='$id' AND id_talla = 3";		
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();
         $consulta = "SELECT id_vestido, codigo, descripcion, precio, imagen, estado FROM vestidos WHERE id_vestido='$id' ";       
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
-        $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
+        $data['normal']=$resultado->fetchAll(PDO::FETCH_ASSOC);
+
+        $consulta = "SELECT cantidad FROM rel_tallas WHERE id_talla = 1 AND id_vestido='$id' ";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();
+        $data['chica']=$resultado->fetchAll(PDO::FETCH_ASSOC);
+
+        $consulta = "SELECT cantidad FROM rel_tallas WHERE id_talla = 2 AND id_vestido='$id' ";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();
+        $data['mediana']=$resultado->fetchAll(PDO::FETCH_ASSOC);
+
+        $consulta = "SELECT cantidad FROM rel_tallas WHERE id_talla = 3 AND id_vestido='$id' ";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();
+        $data['grande']=$resultado->fetchAll(PDO::FETCH_ASSOC);
         break;        
     case 3://baja
         $consulta = "DELETE FROM vestidos WHERE id_vestido='$id' ";		
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
-        $data=$resultado->fetchAll(PDO::FETCH_ASSOC);                           
+        $data['normal']=$resultado->fetchAll(PDO::FETCH_ASSOC);                           
         break;
     case 4: //desactivar
         $consulta = "UPDATE vestidos SET estado=0 WHERE id_vestido='$id' ";		
@@ -87,7 +126,22 @@ switch($opcion){
         $consulta = "SELECT id_vestido, codigo, descripcion, precio, imagen, estado FROM vestidos WHERE id_vestido='$id' ";       
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
-        $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
+        $data['normal']=$resultado->fetchAll(PDO::FETCH_ASSOC);
+
+        $consulta = "SELECT cantidad FROM rel_tallas WHERE id_talla = 1 AND id_vestido='$id' ";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();
+        $data['chica']=$resultado->fetchAll(PDO::FETCH_ASSOC);
+
+        $consulta = "SELECT cantidad FROM rel_tallas WHERE id_talla = 2 AND id_vestido='$id' ";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();
+        $data['mediana']=$resultado->fetchAll(PDO::FETCH_ASSOC);
+
+        $consulta = "SELECT cantidad FROM rel_tallas WHERE id_talla = 3 AND id_vestido='$id' ";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();
+        $data['grande']=$resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
 
     case 5: //activar
@@ -98,7 +152,22 @@ switch($opcion){
         $consulta = "SELECT id_vestido, codigo, descripcion, precio, imagen, estado FROM vestidos WHERE id_vestido='$id' ";       
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
-        $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
+        $data['normal']=$resultado->fetchAll(PDO::FETCH_ASSOC);
+
+        $consulta = "SELECT cantidad FROM rel_tallas WHERE id_talla = 1 AND id_vestido='$id' ";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();
+        $data['chica']=$resultado->fetchAll(PDO::FETCH_ASSOC);
+
+        $consulta = "SELECT cantidad FROM rel_tallas WHERE id_talla = 2 AND id_vestido='$id' ";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();
+        $data['mediana']=$resultado->fetchAll(PDO::FETCH_ASSOC);
+
+        $consulta = "SELECT cantidad FROM rel_tallas WHERE id_talla = 3 AND id_vestido='$id' ";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();
+        $data['grande']=$resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
 
     

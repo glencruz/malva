@@ -63,6 +63,27 @@ switch($opcion){
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);                           
+        break;
+    case 4: //desactivar
+        $consulta = "UPDATE accesorios SET estado=0 WHERE id_accesorio='$id' ";		
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();        
+            
+        $consulta = "SELECT id_accesorio, descripcion, precio, cantidad, imagen, estado FROM accesorios WHERE id_accesorio='$id' ";       
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();
+        $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
+        break;
+
+    case 5: //activar
+        $consulta = "UPDATE accesorios SET estado='1' WHERE id_accesorio='$id' ";		
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();        
+                
+        $consulta = "SELECT id_accesorio, descripcion, precio, cantidad, imagen, estado FROM accesorios WHERE id_accesorio='$id' ";       
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();
+        $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         break;        
 }
 
