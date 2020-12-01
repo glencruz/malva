@@ -101,7 +101,7 @@
 
 							?>
 								<h1><?php echo $total; ?></h1>
-								<a  href="carrito.php?vaciar=true&val=1"class="button">PAGAR CARRITO</a>
+								<a  href="ticket.php?total=<?php echo $total; ?>"class="button">PAGAR CARRITO</a>
 								
 							<?php
 

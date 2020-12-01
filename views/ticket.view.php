@@ -33,13 +33,43 @@ session_start();
             <h1 class="title  morado">
 				Resumen de tu compra
 			</h1>
+
+			<?php
+							$total=0;
+							if(isset($_SESSION["carrito"])){
+								foreach ($_SESSION["carrito"] as $indice => $arreglo) {
+									$total+=$arreglo["precio"]*1;
+
+									foreach ($arreglo as $key => $value) {
+										if($key=="imagen"){
+										}else{
+											
+											?>
+
+									<div class="paragraph black">
+									<?php echo $key.": ".$value?>		
+									</div>
+
+
+
+										<?php	
+
+										}
+
+
+									}
+								}
+								
+							}
+
+									
+							
+
+						?>
             <div class="media">
-                <img src="**********link de la img**************" class="mr-3" alt="...">
                 <div class="media-body">
                     
-                    <div class="paragraph black">
-                    Aqui poner toda la info de cada producto
-                    </div>
+                    
                 </div>
             </div>
             <h1 class="title  morado">
@@ -52,6 +82,31 @@ session_start();
             Cuenta: 12113 784 875 7545
             <br>
             Banco: Banamex
+            <br>
+            <br>
+           
+
+            	<?php
+							$total=0;
+							if(isset($_SESSION["carrito"])){
+								foreach ($_SESSION["carrito"] as $indice => $arreglo) {
+									$total+=$arreglo["precio"]*1;
+
+									foreach ($arreglo as $key => $value) {
+										
+
+
+									}
+								}
+								echo "Total:  $".$total;
+							}
+
+									
+							
+
+						?>
+
+
             <br>
             </div>
           
