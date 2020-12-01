@@ -138,7 +138,7 @@ function iniciosesion(){
                // $('#Csesion').ready();
                // cerrarc.style.display = 'inline-block';
                //  ini.style.display = 'none';
-               location.href ="views/administrador/menu.view.php";
+               location.href ="admin.vestidos.php";
                
              
 

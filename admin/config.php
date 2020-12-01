@@ -2,7 +2,7 @@
 	
 	require('vendor/autoload.php');
 
-	define('RUTA','http://localhost/malva/');
+	define('RUTA','http://localhost:8080/malva/');
 
 
 	
@@ -41,6 +41,7 @@
 
 	#Own 
 	#	js
+	$iniciarsesion_js='<script src="'.RUTA.'js/registrousuario.js"></script>';
 		$own_file_js = '<script src="'.RUTA.'js/malva.js"></script>';
 	#	css
 		$own_file_css = '<link rel="stylesheet" href="'.RUTA.'css/malva.min.css">';
