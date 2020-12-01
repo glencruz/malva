@@ -94,8 +94,15 @@ $gris: #e6e1e5;
     color: $orange;
   }
   &.white {
-    color: $white;
+    color: $white !important;
   }
+  &.lila {
+    color: $lila !important;
+  }
+  &.morado {
+    color: $morado !important;
+  }
+
   &.v2 {
     font-size: 1.8rem;
   }

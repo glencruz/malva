@@ -58,7 +58,11 @@
   .paragraph.orange {
     color: #fc8813; }
   .paragraph.white {
-    color: white; }
+    color: white !important; }
+  .paragraph.lila {
+    color: #d78ece !important; }
+  .paragraph.morado {
+    color: #aa0095 !important; }
   .paragraph.v2 {
     font-size: 1.8rem; }
   .paragraph.v3 {
@@ -168,6 +172,31 @@ a:hover {
 a:focus {
   outline: none; }
 
+form {
+  margin-top: 10%; }
+  form input[type="text"],
+  form input[type="email"],
+  form input[type="password"],
+  form input[type="number"] {
+    width: 100%;
+    height: 0%;
+    background-color: #efefef;
+    margin-bottom: 2rem;
+    padding: 1rem 1.3rem;
+    border: solid 2px #aa0095;
+    font-family: poppins-regular;
+    font-size: small; }
+  form textarea {
+    resize: none;
+    padding: 1rem 1.3rem;
+    border: solid 2px #aa0095;
+    width: 100%;
+    height: auto;
+    background-color: #efefef;
+    font-family: poppins-regular;
+    font-size: small;
+    margin-bottom: 10%; }
+
 header.header.scroll {
   background-color: #d78ece; }
   header.header.scroll .regular-logo {
@@ -175,9 +204,11 @@ header.header.scroll {
             filter: brightness(0) invert(1); }
   header.header.scroll h1 {
     color: #fff; }
+  header.header.scroll .lila {
+    color: white !important; }
 
 .user-icon {
-  margin: 0 0 0 40%;
+  margin: 0 0 0 30%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex; }
@@ -359,9 +390,6 @@ section.blog {
       display: flex; }
       section.blog .carousel-blog .slider .preview-post {
         margin-right: 3rem;
-        -webkit-box-flex: 0;
-            -ms-flex: 0 0 41.666667%;
-                flex: 0 0 41.666667%;
         max-width: 41.666667%;
         position: relative; }
         section.blog .carousel-blog .slider .preview-post a figure {
@@ -381,9 +409,6 @@ section.blog {
           bottom: 1.4rem; }
       section.blog .carousel-blog .slider .preview-post2 {
         margin-right: 3rem;
-        -webkit-box-flex: 0;
-            -ms-flex: 0 0 41.666667%;
-                flex: 0 0 41.666667%;
         max-width: 41.666667%;
         position: relative; }
         section.blog .carousel-blog .slider .preview-post2 a figure {
@@ -431,9 +456,6 @@ section.casos {
     section.casos .slider .preview-post {
       margin-right: 3rem;
       margin-bottom: 2%;
-      -webkit-box-flex: 0;
-          -ms-flex: 0 0 43%;
-              flex: 0 0 43%;
       max-width: 100%;
       position: relative; }
       section.casos .slider .preview-post a figure {

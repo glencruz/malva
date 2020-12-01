@@ -23,6 +23,35 @@ a:hover {
 a:focus {
   outline: none;
 }
+form {
+  margin-top: 10%;
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"] {
+    width: 100%;
+    height: 0%;
+    background-color: #efefef;
+    margin-bottom: 2rem;
+    padding: 1rem 1.3rem;
+    border: solid 2px $morado;
+    font-family: poppins-regular;
+    font-size: small;
+  }
+
+  textarea {
+    resize: none;
+    padding: 1rem 1.3rem;
+    border: solid 2px $morado;
+    width: 100%;
+    height: auto;
+    background-color: #efefef;
+    font-family: poppins-regular;
+    font-size: small;
+    margin-bottom: 10%;
+  }
+}
 header.header.scroll {
   background-color: $lila;
   .regular-logo {
@@ -31,9 +60,12 @@ header.header.scroll {
   h1 {
     color: #fff;
   }
+  .lila {
+    color: $white !important;
+  }
 }
 .user-icon {
-  margin: 0 0 0 40%;
+  margin: 0 0 0 30%;
   display: flex;
   //background-color: #fff;
   .regular-logo {
@@ -241,7 +273,7 @@ section.blog {
       display: flex;
       .preview-post {
         margin-right: 3rem;
-        flex: 0 0 41.666667%;
+        //        flex: 0 0 41.666667%;
         max-width: 41.666667%;
 
         position: relative;
@@ -269,7 +301,6 @@ section.blog {
       }
       .preview-post2 {
         margin-right: 3rem;
-        flex: 0 0 41.666667%;
         max-width: 41.666667%;
 
         position: relative;
@@ -326,7 +357,6 @@ section.casos {
     .preview-post {
       margin-right: 3rem;
       margin-bottom: 2%;
-      flex: 0 0 43%;
       max-width: 100%;
       position: relative;
       a {
