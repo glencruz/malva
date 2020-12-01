@@ -273,7 +273,7 @@ section.blog {
       display: flex;
       .preview-post {
         margin-right: 3rem;
-        //        flex: 0 0 41.666667%;
+        flex: 0 0 41.666667%;
         max-width: 41.666667%;
 
         position: relative;
@@ -302,7 +302,7 @@ section.blog {
       .preview-post2 {
         margin-right: 3rem;
         max-width: 41.666667%;
-
+        flex: 0 0 41.666667%;
         position: relative;
         a {
           figure {
@@ -356,6 +356,7 @@ section.casos {
     display: flex;
     .preview-post {
       margin-right: 3rem;
+      flex: 0 0 41.666667%;
       margin-bottom: 2%;
       max-width: 100%;
       position: relative;
