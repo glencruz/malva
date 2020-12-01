@@ -71,11 +71,11 @@ if(session_status() !== 2)
     <div class="row justify-content-end links title v2 white text-right flex-column">
 
         <a href="<?php if (isset( $isHome ) ){ echo '#home';} else{ echo RUTA.'#home';}?>" class="margen">Inicio</a>
-        <a href="<?php if (isset( $isHome ) ){ echo '#vestidos';} else{ echo RUTA.'#vestidos';}?>">Vestidos</a>
-        <a href="<?php if (isset( $isHome ) ){ echo '#accesorios';} else{ echo RUTA.'#accesorios';}?>">Accesorios</a>
+        <a href="<?=RUTA?>vestidos.php">Vestidos</a>
+        <a href="<?=RUTA?>accesorios.php">Accesorios</a>
         <a href="<?php if (isset( $isHome ) ){ echo '#about';} else{ echo RUTA.'#about';}?>">Acerca de</a>
         <a href="<?php if (isset( $isHome ) ){ echo '#contacto';} else{ echo RUTA.'#contacto';}?>">Contacto</a>
-        <a href="login.php">Iniciar Sesión</a>
+        <a href="<?=RUTA?>login.php">Iniciar Sesión</a>
 
         <div class="social-icons">
 
