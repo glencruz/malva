@@ -226,7 +226,7 @@
                             <figure>
                                 <!--https://placehold.it/534x325 -->
                                 <img src="<?php echo RUTA ?>bd/<?php echo $vestido['imagen'] ?> " class="img-fluid mw"
-                                    style="" alt="">
+                                    style="max-width:50%;" alt="">
                             </figure>
                             <div class="content">
                                 <h1 class="title morado">
